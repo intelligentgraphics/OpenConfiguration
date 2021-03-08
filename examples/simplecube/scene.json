@@ -1,0 +1,74 @@
+{
+	"format": "OpenConfiguration_1.0",
+	"creator": "IG.Data.GFX.Formats IGXC To OC Converter",
+	"status": {
+		"code": 200
+	},
+	"hashes": {
+		"IG.Reference.Cube2.geo/standard.ctm": "ed085dd38a0d2639d97bb0802932d8b2",
+		"IG.Reference.Cube2.geo/normals_std.png": "66da0bbb3659bb39e02cd556b0539f0d",
+		"IG.Reference.Bricks.tex/standard.jpg": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+	},
+	"scripts": [
+	],
+	"geometries": {
+		"IG.Reference.Cube2": {
+			"ig": {
+				"previewFormat": null,
+				"preview": null,
+				"meshFormat": "OpenCTM",
+				"mesh": "IG.Reference.Cube2.geo/standard.ctm",
+				"normalMapFormat": "PNG",
+				"normalMap": "IG.Reference.Cube2.geo/normals_std.png"
+			}
+		}
+	},
+	"materials": {
+		"IG.Reference.Bricks": {
+			"ig": {
+				"diffuse": {
+					"color": {
+						"red": 0.62750000000000006,
+						"green": 0.36860000000000004,
+						"blue": 0.4431
+					},
+					"map": {
+						"mapFormat": "JPEG",
+						"map": "IG.Reference.Bricks.tex/standard.jpg"
+					}
+				},
+				"shininess": 0.0,
+				"alpha": {
+					"value": 1.0
+				}
+			}
+		}
+	},
+	"products": [{
+			"state": {
+				"geometricHash": "#1596707789",
+				"visualHash": "#-1085120996"
+			},
+			"materialCategories": {
+				"unused__@IG.Reference.Bricks": "IG.Reference.Bricks"
+			},
+			"categories": [],
+			"structure": [{
+					"path": ".",
+					"visible": true,
+					"selectable": "Self",
+					"deformation": 0.0
+				}, {
+					"path": "o1",
+					"visible": true,
+					"geometry": "IG.Reference.Cube2",
+					"deformation": 0.0,
+					"materialCategory": "@IG.Reference.Bricks"
+				}
+			],
+			"status": {
+				"code": 200
+			}
+		}
+	]
+}

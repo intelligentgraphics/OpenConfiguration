@@ -1,0 +1,1171 @@
+{
+  "format": "OpenConfiguration_1.0",
+  "creator": "IG.Mobile.GfxEngine.Net 1.4.3 (1.4.3.100)",
+  "status": {
+    "code": 200
+  },
+  "configurationId": "7501849b-ede6-49ef-afac-94bb144b3495",
+  "basePath": "https://icom-production-01.intelligentgraphics.biz/icom.data/gfx/",
+  "hashes": {
+    "IG.Math.js": "bb3fa68aaba91cf5016dc26f7f6c0c71",
+    "IG.GFX.Standard.js": "049681f5ebed76335d084e2110452e10",
+    "IG.Interactors.js": "680fb49143a4be063b08da98d7b0949e",
+    "IG/Beds/Frame_140_200.geo/standard.ctm": "33de04d110511453935b6abc93919032",
+    "IG/Beds/Frame_140_200.geo/lowres.ctm": "33de04d110511453935b6abc93919032",
+    "IG/Beds/Border_140_200.geo/standard.ctm": "c115c62a1b2832568393eed38653fb87",
+    "IG/Beds/Border_140_200.geo/lowres.ctm": "c115c62a1b2832568393eed38653fb87",
+    "IG/Beds/MA_140_200.geo/standard.ctm": "d6c2e0c786ace466d718ef8e6d6cdddf",
+    "IG/Beds/MA_140_200.geo/normals_standard.png": "c202c83f91e2285c345af079cc8b2f5d",
+    "IG/Beds/MA_140_200.geo/lowres.ctm": "d6c2e0c786ace466d718ef8e6d6cdddf",
+    "IG/Beds/Blanket_L.geo/standard.ctm": "aa6af0d09ece517916a4b59b2ac50527",
+    "IG/Beds/Blanket_L.geo/normals_standard.png": "54132bff7ef6320130ffab6f22e627f0",
+    "IG/Beds/Blanket_L.geo/lowres.ctm": "aa6af0d09ece517916a4b59b2ac50527",
+    "IG/Beds/Blanket_R.geo/standard.ctm": "6dae5f499811999a91b6d8aad2cefb53",
+    "IG/Beds/Blanket_R.geo/normals_standard.png": "ae711531b818b11007c52a3d14ee7187",
+    "IG/Beds/Blanket_R.geo/lowres.ctm": "6dae5f499811999a91b6d8aad2cefb53",
+    "IG/Beds/Pillow001.geo/standard.ctm": "d125c85de115e8717519d11082758489",
+    "IG/Beds/Pillow001.geo/lowres.ctm": "d125c85de115e8717519d11082758489",
+    "IG/Beds/Pillow002.geo/standard.ctm": "8020082957032b507413c7079e353650",
+    "IG/Beds/Pillow002.geo/lowres.ctm": "8020082957032b507413c7079e353650",
+    "IG/Beds/H1_Cushion_140.geo/standard.ctm": "7373ea88a7e0e08feebdb8bf46dea93d",
+    "IG/Beds/H1_Cushion_140.geo/lowres.ctm": "7373ea88a7e0e08feebdb8bf46dea93d",
+    "IG/Beds/H1_Buttons_140.geo/standard.ctm": "43f2279216407e2fe4c9fe83c92604b5",
+    "IG/Beds/H1_Buttons_140.geo/lowres.ctm": "43f2279216407e2fe4c9fe83c92604b5",
+    "IG/Beds/Foot_Long.geo/standard.ctm": "b645c4e8faec6ac08abc8084320e5a34",
+    "IG/Beds/Foot_Long.geo/lowres.ctm": "b645c4e8faec6ac08abc8084320e5a34",
+    "IG/Beds/Eiche.tex/standard.jpeg": "b08ca75b96e983ce4e0b8ec8c48e5921",
+    "IG/Beds/Eiche.tex/normals_standard.png": "84ff7b63f930798d9242ec9190998c0c",
+    "IG/Beds/Stoff_elfenbein.tex/standard.jpeg": "9760d0b50c053ae608399ab404dd0ec1",
+    "IG/Beds/Stoff_elfenbein.tex/normals_standard.png": "db04bfd3f8047e376f18dc7c07b9e87f",
+    "IG/Beds/Stoff_weiss.tex/standard.jpeg": "fdb8b77525eb00270093826f94cdc7d9",
+    "IG/Beds/Stoff_weiss.tex/normals_standard.png": "db04bfd3f8047e376f18dc7c07b9e87f",
+    "IG/Beds/Buche_Lack.tex/standard.jpeg": "2f87d67edbfa24f9cb64806f8968fe99",
+    "IG/Beds/Buche_Lack.tex/normals_standard.png": "15b7c407ca92ea1cb7663272e988e8f1",
+    "IG/Beds/Leimholz.tex/standard.jpeg": "ec0bbbeb7e9689ddf2572eb2b7d8cc4d",
+    "IG/Beds/Lamp_black.geo/standard.ctm": "7fe87f1c712da259d17e91e637047b96",
+    "IG/Beds/Lamp_black.geo/lowres.ctm": "7fe87f1c712da259d17e91e637047b96",
+    "IG/Beds/Lamp_silver.geo/standard.ctm": "7ae67c79bda750fe33a1b6b81a8c59f7",
+    "IG/Beds/Lamp_silver.geo/lowres.ctm": "7ae67c79bda750fe33a1b6b81a8c59f7",
+    "IG/Beds/Tisch_foot.geo/standard.ctm": "fd23a0bd4a5740c02de7714b5461ce4a",
+    "IG/Beds/Tisch_foot.geo/lowres.ctm": "fd23a0bd4a5740c02de7714b5461ce4a",
+    "IG/Beds/Tisch_top.geo/standard.ctm": "2a4426d030ca122786d7114cad18fb48",
+    "IG/Beds/Tisch_top.geo/lowres.ctm": "2a4426d030ca122786d7114cad18fb48",
+    "IG/Beds/Tisch_in.geo/standard.ctm": "705cfe2920afdfc6aa6cee7fb6594aee",
+    "IG/Beds/Tisch_in.geo/lowres.ctm": "705cfe2920afdfc6aa6cee7fb6594aee",
+    "IG/Beds/Tablett_01.geo/standard.ctm": "b5955d28edbd405721e9153792cc7f6f",
+    "IG/Beds/Tablett_01.geo/lowres.ctm": "b5955d28edbd405721e9153792cc7f6f",
+    "IG/Beds/Glass_01.geo/standard.ctm": "534eb33a99688af1b44e153b3d1325a4",
+    "IG/Beds/Glass_01.geo/lowres.ctm": "534eb33a99688af1b44e153b3d1325a4"
+  },
+  "scripts": [
+    {
+      "name": "IG.Math",
+      "mode": "Interactor",
+      "version": "1.0.0.100",
+      "runTime": true
+    },
+    {
+      "name": "IG.GFX.Standard",
+      "mode": "Interactor",
+      "version": "1.7.1.100",
+      "runTime": true
+    },
+    {
+      "name": "IG.Interactors",
+      "mode": "Interactor",
+      "version": "1.0.0.100",
+      "runTime": true
+    }
+  ],
+  "geometries": {
+    "IG.Beds.Frame_140_200": {
+      "ig": {
+        "previewFormat": "OpenCTM",
+        "preview": "IG/Beds/Frame_140_200.geo/lowres.ctm",
+        "meshFormat": "OpenCTM",
+        "mesh": "IG/Beds/Frame_140_200.geo/standard.ctm"
+      }
+    },
+    "IG.Beds.Border_140_200": {
+      "ig": {
+        "previewFormat": "OpenCTM",
+        "preview": "IG/Beds/Border_140_200.geo/lowres.ctm",
+        "meshFormat": "OpenCTM",
+        "mesh": "IG/Beds/Border_140_200.geo/standard.ctm"
+      }
+    },
+    "IG.Beds.MA_140_200": {
+      "ig": {
+        "previewFormat": "OpenCTM",
+        "preview": "IG/Beds/MA_140_200.geo/lowres.ctm",
+        "meshFormat": "OpenCTM",
+        "mesh": "IG/Beds/MA_140_200.geo/standard.ctm",
+        "normalMapFormat": "PNG",
+        "normalMap": "IG/Beds/MA_140_200.geo/normals_standard.png"
+      }
+    },
+    "IG.Beds.Blanket_L": {
+      "ig": {
+        "previewFormat": "OpenCTM",
+        "preview": "IG/Beds/Blanket_L.geo/lowres.ctm",
+        "meshFormat": "OpenCTM",
+        "mesh": "IG/Beds/Blanket_L.geo/standard.ctm",
+        "normalMapFormat": "PNG",
+        "normalMap": "IG/Beds/Blanket_L.geo/normals_standard.png"
+      }
+    },
+    "IG.Beds.Blanket_R": {
+      "ig": {
+        "previewFormat": "OpenCTM",
+        "preview": "IG/Beds/Blanket_R.geo/lowres.ctm",
+        "meshFormat": "OpenCTM",
+        "mesh": "IG/Beds/Blanket_R.geo/standard.ctm",
+        "normalMapFormat": "PNG",
+        "normalMap": "IG/Beds/Blanket_R.geo/normals_standard.png"
+      }
+    },
+    "IG.Beds.Pillow001": {
+      "ig": {
+        "previewFormat": "OpenCTM",
+        "preview": "IG/Beds/Pillow001.geo/lowres.ctm",
+        "meshFormat": "OpenCTM",
+        "mesh": "IG/Beds/Pillow001.geo/standard.ctm"
+      }
+    },
+    "IG.Beds.Pillow002": {
+      "ig": {
+        "previewFormat": "OpenCTM",
+        "preview": "IG/Beds/Pillow002.geo/lowres.ctm",
+        "meshFormat": "OpenCTM",
+        "mesh": "IG/Beds/Pillow002.geo/standard.ctm"
+      }
+    },
+    "IG.Beds.H1_Cushion_140": {
+      "ig": {
+        "previewFormat": "OpenCTM",
+        "preview": "IG/Beds/H1_Cushion_140.geo/lowres.ctm",
+        "meshFormat": "OpenCTM",
+        "mesh": "IG/Beds/H1_Cushion_140.geo/standard.ctm"
+      }
+    },
+    "IG.Beds.H1_Buttons_140": {
+      "ig": {
+        "previewFormat": "OpenCTM",
+        "preview": "IG/Beds/H1_Buttons_140.geo/lowres.ctm",
+        "meshFormat": "OpenCTM",
+        "mesh": "IG/Beds/H1_Buttons_140.geo/standard.ctm"
+      }
+    },
+    "IG.Beds.Foot_Long": {
+      "ig": {
+        "previewFormat": "OpenCTM",
+        "preview": "IG/Beds/Foot_Long.geo/lowres.ctm",
+        "meshFormat": "OpenCTM",
+        "mesh": "IG/Beds/Foot_Long.geo/standard.ctm"
+      }
+    },
+    "IG.Beds.Lamp_black": {
+      "ig": {
+        "previewFormat": "OpenCTM",
+        "preview": "IG/Beds/Lamp_black.geo/lowres.ctm",
+        "meshFormat": "OpenCTM",
+        "mesh": "IG/Beds/Lamp_black.geo/standard.ctm"
+      }
+    },
+    "IG.Beds.Lamp_silver": {
+      "ig": {
+        "previewFormat": "OpenCTM",
+        "preview": "IG/Beds/Lamp_silver.geo/lowres.ctm",
+        "meshFormat": "OpenCTM",
+        "mesh": "IG/Beds/Lamp_silver.geo/standard.ctm"
+      }
+    },
+    "IG.Beds.Tisch_foot": {
+      "ig": {
+        "previewFormat": "OpenCTM",
+        "preview": "IG/Beds/Tisch_foot.geo/lowres.ctm",
+        "meshFormat": "OpenCTM",
+        "mesh": "IG/Beds/Tisch_foot.geo/standard.ctm"
+      }
+    },
+    "IG.Beds.Tisch_top": {
+      "ig": {
+        "previewFormat": "OpenCTM",
+        "preview": "IG/Beds/Tisch_top.geo/lowres.ctm",
+        "meshFormat": "OpenCTM",
+        "mesh": "IG/Beds/Tisch_top.geo/standard.ctm"
+      }
+    },
+    "IG.Beds.Tisch_in": {
+      "ig": {
+        "previewFormat": "OpenCTM",
+        "preview": "IG/Beds/Tisch_in.geo/lowres.ctm",
+        "meshFormat": "OpenCTM",
+        "mesh": "IG/Beds/Tisch_in.geo/standard.ctm"
+      }
+    },
+    "IG.Beds.Tablett_01": {
+      "ig": {
+        "previewFormat": "OpenCTM",
+        "preview": "IG/Beds/Tablett_01.geo/lowres.ctm",
+        "meshFormat": "OpenCTM",
+        "mesh": "IG/Beds/Tablett_01.geo/standard.ctm"
+      }
+    },
+    "IG.Beds.Glass_01": {
+      "ig": {
+        "previewFormat": "OpenCTM",
+        "preview": "IG/Beds/Glass_01.geo/lowres.ctm",
+        "meshFormat": "OpenCTM",
+        "mesh": "IG/Beds/Glass_01.geo/standard.ctm"
+      }
+    }
+  },
+  "materials": {
+    "IG.Beds.Eiche": {
+      "ig": {
+        "diffuse": {
+          "color": {
+            "red": 0.7686000000000001,
+            "green": 0.6588,
+            "blue": 0.47450000000000003
+          },
+          "map": {
+            "mapFormat": "JPEG",
+            "map": "IG/Beds/Eiche.tex/standard.jpeg"
+          }
+        },
+        "specular": {
+          "color": {
+            "red": 0.0,
+            "green": 0.0,
+            "blue": 0.0
+          }
+        },
+        "shininess": 0.0,
+        "emission": {
+          "color": {
+            "red": 0.0,
+            "green": 0.0,
+            "blue": 0.0
+          }
+        },
+        "normal": {
+          "map": {
+            "mapFormat": "PNG",
+            "map": "IG/Beds/Eiche.tex/normals_standard.png"
+          }
+        },
+        "alpha": {
+          "value": 1.0
+        }
+      }
+    },
+    "IG.Beds.Kupfer": {
+      "ig": {
+        "taxonomy": {
+          "mat": "coppr",
+          "coa": "nc",
+          "rou": 0.2,
+          "bri": 0.5
+        },
+        "diffuse": {
+          "color": {
+            "red": 0.6745,
+            "green": 0.451,
+            "blue": 0.3176
+          }
+        },
+        "specular": {
+          "color": {
+            "red": 0.0,
+            "green": 0.0,
+            "blue": 0.0
+          }
+        },
+        "shininess": 0.0,
+        "emission": {
+          "color": {
+            "red": 0.0,
+            "green": 0.0,
+            "blue": 0.0
+          }
+        },
+        "alpha": {
+          "value": 1.0
+        }
+      }
+    },
+    "IG.Beds.Stoff_elfenbein": {
+      "ig": {
+        "diffuse": {
+          "color": {
+            "red": 0.8431000000000001,
+            "green": 0.8275,
+            "blue": 0.7843
+          },
+          "map": {
+            "mapFormat": "JPEG",
+            "map": "IG/Beds/Stoff_elfenbein.tex/standard.jpeg"
+          }
+        },
+        "specular": {
+          "color": {
+            "red": 0.0,
+            "green": 0.0,
+            "blue": 0.0
+          }
+        },
+        "shininess": 0.0,
+        "emission": {
+          "color": {
+            "red": 0.0,
+            "green": 0.0,
+            "blue": 0.0
+          }
+        },
+        "normal": {
+          "map": {
+            "mapFormat": "PNG",
+            "map": "IG/Beds/Stoff_elfenbein.tex/normals_standard.png"
+          }
+        },
+        "alpha": {
+          "value": 1.0
+        }
+      }
+    },
+    "IG.Beds.Stoff_weiss": {
+      "ig": {
+        "diffuse": {
+          "color": {
+            "red": 0.9216000000000001,
+            "green": 0.9216000000000001,
+            "blue": 0.9216000000000001
+          },
+          "map": {
+            "mapFormat": "JPEG",
+            "map": "IG/Beds/Stoff_weiss.tex/standard.jpeg"
+          }
+        },
+        "specular": {
+          "color": {
+            "red": 0.0,
+            "green": 0.0,
+            "blue": 0.0
+          }
+        },
+        "shininess": 0.0,
+        "emission": {
+          "color": {
+            "red": 0.0,
+            "green": 0.0,
+            "blue": 0.0
+          }
+        },
+        "normal": {
+          "map": {
+            "mapFormat": "PNG",
+            "map": "IG/Beds/Stoff_weiss.tex/normals_standard.png"
+          }
+        },
+        "alpha": {
+          "value": 1.0
+        }
+      }
+    },
+    "IG.Beds.Buche_Lack": {
+      "ig": {
+        "taxonomy": {
+          "mat": "beech",
+          "coa": "sh",
+          "rou": 0.5,
+          "bri": 0.5,
+          "con": 0.5
+        },
+        "diffuse": {
+          "color": {
+            "red": 0.9529000000000001,
+            "green": 0.8431000000000001,
+            "blue": 0.7216
+          },
+          "map": {
+            "mapFormat": "JPEG",
+            "map": "IG/Beds/Buche_Lack.tex/standard.jpeg"
+          }
+        },
+        "specular": {
+          "color": {
+            "red": 0.6,
+            "green": 0.6,
+            "blue": 0.6
+          }
+        },
+        "shininess": 0.0,
+        "emission": {
+          "color": {
+            "red": 0.0,
+            "green": 0.0,
+            "blue": 0.0
+          }
+        },
+        "normal": {
+          "map": {
+            "mapFormat": "PNG",
+            "map": "IG/Beds/Buche_Lack.tex/normals_standard.png"
+          }
+        },
+        "alpha": {
+          "value": 1.0
+        }
+      }
+    },
+    "IG.Beds.Chrom": {
+      "ig": {
+        "taxonomy": {
+          "mat": "chro",
+          "coa": "fi",
+          "rou": 0,
+          "bri": 0.5
+        },
+        "diffuse": {
+          "color": {
+            "red": 0.9098,
+            "green": 0.9098,
+            "blue": 0.9098
+          }
+        },
+        "specular": {
+          "color": {
+            "red": 1.0,
+            "green": 1.0,
+            "blue": 1.0
+          }
+        },
+        "shininess": 0.0,
+        "emission": {
+          "color": {
+            "red": 0.0,
+            "green": 0.0,
+            "blue": 0.0
+          }
+        },
+        "alpha": {
+          "value": 1.0
+        }
+      }
+    },
+    "IG.Beds.Leimholz": {
+      "ig": {
+        "diffuse": {
+          "color": {
+            "red": 0.502,
+            "green": 0.502,
+            "blue": 0.502
+          },
+          "map": {
+            "mapFormat": "JPEG",
+            "map": "IG/Beds/Leimholz.tex/standard.jpeg"
+          }
+        },
+        "specular": {
+          "color": {
+            "red": 0.0,
+            "green": 0.0,
+            "blue": 0.0
+          }
+        },
+        "shininess": 0.0,
+        "emission": {
+          "color": {
+            "red": 0.0,
+            "green": 0.0,
+            "blue": 0.0
+          }
+        },
+        "alpha": {
+          "value": 1.0
+        }
+      }
+    },
+    "IG.Beds.Edelstahl": {
+      "ig": {
+        "taxonomy": {
+          "mat": "hqust",
+          "coa": "nc",
+          "rou": 0.3,
+          "bri": 0.5
+        },
+        "diffuse": {
+          "color": {
+            "red": 0.7529,
+            "green": 0.7529,
+            "blue": 0.7529
+          }
+        },
+        "specular": {
+          "color": {
+            "red": 0.0,
+            "green": 0.0,
+            "blue": 0.0
+          }
+        },
+        "shininess": 0.0,
+        "emission": {
+          "color": {
+            "red": 0.0,
+            "green": 0.0,
+            "blue": 0.0
+          }
+        },
+        "alpha": {
+          "value": 1.0
+        }
+      }
+    },
+    "IG.Beds.Metal_Black": {
+      "ig": {
+        "diffuse": {
+          "color": {
+            "red": 0.2,
+            "green": 0.2,
+            "blue": 0.2
+          }
+        },
+        "specular": {
+          "color": {
+            "red": 1.0,
+            "green": 1.0,
+            "blue": 1.0
+          }
+        },
+        "shininess": 0.0,
+        "emission": {
+          "color": {
+            "red": 0.0,
+            "green": 0.0,
+            "blue": 0.0
+          }
+        },
+        "alpha": {
+          "value": 1.0
+        }
+      }
+    },
+    "IG.Beds.Glas3": {
+      "ig": {
+        "taxonomy": {
+          "mat": "chro",
+          "coa": "fi",
+          "rou": 0,
+          "bri": 0.5
+        },
+        "diffuse": {
+          "color": {
+            "red": 0.7529,
+            "green": 0.8,
+            "blue": 0.7529
+          }
+        },
+        "specular": {
+          "color": {
+            "red": 0.0,
+            "green": 0.0,
+            "blue": 0.0
+          }
+        },
+        "shininess": 0.0,
+        "emission": {
+          "color": {
+            "red": 0.0,
+            "green": 0.0,
+            "blue": 0.0
+          }
+        },
+        "alpha": {
+          "value": 0.6
+        }
+      }
+    }
+  },
+  "products": [
+    {
+      "kind": "Product",
+      "state": {
+        "comId": "c557206e-e79d-4be6-9c96-75a4f9220d3e",
+        "geometricHash": "#-1917956091",
+        "visualHash": "#759780919"
+      },
+      "transform": {},
+      "materialCategories": {
+        "IG.Beds.Wood": "IG.Beds.Eiche",
+        "IG.Beds.Metal": "IG.Beds.Kupfer",
+        "IG.Beds.Cover": null,
+        "IG.Beds.CoverKT": "IG.Beds.Stoff_elfenbein",
+        "IG.Beds.Cover_KT": null,
+        "IG.Beds.BK_Mat": "IG.Beds.Stoff_weiss",
+        "IG.Showcase.Wood": "IG.Beds.Buche_Lack",
+        "IG.Showcase.Metal": "IG.Beds.Chrom",
+        "@IG.Beds.Leimholz": "IG.Beds.Leimholz",
+        "@IG.Beds.Stoff_weiss": "IG.Beds.Stoff_weiss",
+        "@IG.Beds.Edelstahl": "IG.Beds.Edelstahl"
+      },
+      "categories": [],
+      "structure": [
+        {
+          "path": ".",
+          "visible": true,
+          "selectable": "Self",
+          "deformation": 0.0
+        },
+        {
+          "path": "o1",
+          "visible": true,
+          "geometry": "IG.Beds.Frame_140_200",
+          "deformation": 0.0,
+          "materialCategory": "IG.Beds.Wood",
+          "transform": {
+            "position": {
+              "x": 0.0,
+              "y": 0.15000000596046448,
+              "z": 0.10000000149011612
+            }
+          }
+        },
+        {
+          "path": "o1.o1",
+          "visible": true,
+          "geometry": "IG.Beds.Border_140_200",
+          "deformation": 0.0,
+          "materialCategory": "@IG.Beds.Leimholz"
+        },
+        {
+          "path": "o1.o2",
+          "visible": true,
+          "geometry": "IG.Beds.MA_140_200",
+          "deformation": 0.0,
+          "materialCategory": "@IG.Beds.Stoff_weiss",
+          "transform": {
+            "position": {
+              "x": 0.03200000151991844,
+              "y": 0.17000000178813934,
+              "z": 0.029999999329447746
+            }
+          }
+        },
+        {
+          "path": "o1.o3",
+          "visible": true,
+          "geometry": "IG.Beds.Blanket_L",
+          "deformation": 0.0,
+          "materialCategory": "@IG.Beds.Stoff_weiss",
+          "transform": {
+            "position": {
+              "x": 0.019999999552965164,
+              "y": 0.33000001311302185,
+              "z": 0.5
+            },
+            "scale": {
+              "x": 0.8299999833106995,
+              "y": 1.0,
+              "z": 1.0199999809265137
+            }
+          }
+        },
+        {
+          "path": "o1.o4",
+          "visible": true,
+          "geometry": "IG.Beds.Blanket_R",
+          "deformation": 0.0,
+          "materialCategory": "@IG.Beds.Stoff_weiss",
+          "transform": {
+            "position": {
+              "x": 0.699999988079071,
+              "y": 0.3499999940395355,
+              "z": 0.5
+            },
+            "rotation": {
+              "x": -0.008726535498373935,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 0.9999619230641713
+            },
+            "scale": {
+              "x": 0.8700000047683716,
+              "y": 1.100000023841858,
+              "z": 1.0199999809265137
+            }
+          }
+        },
+        {
+          "path": "o1.o5",
+          "visible": true,
+          "geometry": "IG.Beds.Pillow001",
+          "deformation": 0.0,
+          "materialCategory": "@IG.Beds.Stoff_weiss",
+          "transform": {
+            "position": {
+              "x": 0.4000000059604645,
+              "y": 0.5799999833106995,
+              "z": 0.27000001072883606
+            },
+            "rotation": {
+              "x": 0.0,
+              "y": 0.043619387365336,
+              "z": 0.0,
+              "w": 0.9990482215818578
+            },
+            "scale": {
+              "x": 1.100000023841858,
+              "y": 1.0,
+              "z": 1.0
+            }
+          }
+        },
+        {
+          "path": "o1.o6",
+          "visible": true,
+          "geometry": "IG.Beds.Pillow002",
+          "deformation": 0.0,
+          "materialCategory": "@IG.Beds.Stoff_weiss",
+          "transform": {
+            "position": {
+              "x": 1.0800000429153442,
+              "y": 0.5899999737739563,
+              "z": 0.28999999165534973
+            },
+            "rotation": {
+              "x": 0.0,
+              "y": -0.08715574274765817,
+              "z": 0.0,
+              "w": 0.9961946980917455
+            },
+            "scale": {
+              "x": 1.100000023841858,
+              "y": 1.0,
+              "z": 1.0
+            }
+          }
+        },
+        {
+          "path": "o2",
+          "visible": true,
+          "geometry": "IG.Beds.H1_Cushion_140",
+          "deformation": 0.0,
+          "materialCategory": "IG.Beds.CoverKT",
+          "transform": {
+            "position": {
+              "x": 0.03500000014901161,
+              "y": 0.5799999833106995,
+              "z": 0.11999999731779099
+            },
+            "scale": {
+              "x": 1.0,
+              "y": 1.0199999809265137,
+              "z": 1.0
+            }
+          }
+        },
+        {
+          "path": "o2.o1",
+          "visible": true,
+          "geometry": "IG.Beds.H1_Buttons_140",
+          "deformation": 0.0,
+          "materialCategory": "@IG.Beds.Edelstahl"
+        },
+        {
+          "path": "o4",
+          "visible": true,
+          "geometry": "IG.Beds.Foot_Long",
+          "deformation": 0.0,
+          "materialCategory": "IG.Beds.Metal",
+          "transform": {
+            "position": {
+              "x": 0.035999998450279236,
+              "y": 0.0,
+              "z": 0.20000000298023224
+            }
+          }
+        },
+        {
+          "path": "o5",
+          "visible": true,
+          "geometry": "IG.Beds.Foot_Long",
+          "deformation": 0.0,
+          "materialCategory": "IG.Beds.Metal",
+          "transform": {
+            "position": {
+              "x": 0.035999998450279236,
+              "y": 0.0,
+              "z": 2.063999891281128
+            },
+            "rotation": {
+              "x": 0.0,
+              "y": 0.7071067811865475,
+              "z": 0.0,
+              "w": 0.7071067811865476
+            }
+          }
+        },
+        {
+          "path": "o6",
+          "visible": true,
+          "geometry": "IG.Beds.Foot_Long",
+          "deformation": 0.0,
+          "materialCategory": "IG.Beds.Metal",
+          "transform": {
+            "position": {
+              "x": 1.399999976158142,
+              "y": 0.0,
+              "z": 0.20000000298023224
+            },
+            "rotation": {
+              "x": 0.0,
+              "y": -0.7071067811865475,
+              "z": 0.0,
+              "w": 0.7071067811865476
+            }
+          }
+        },
+        {
+          "path": "o7",
+          "visible": true,
+          "geometry": "IG.Beds.Foot_Long",
+          "deformation": 0.0,
+          "materialCategory": "IG.Beds.Metal",
+          "transform": {
+            "position": {
+              "x": 1.399999976158142,
+              "y": 0.0,
+              "z": 2.063999891281128
+            },
+            "rotation": {
+              "x": 0.0,
+              "y": 1.0,
+              "z": 0.0,
+              "w": 6.123233995736766E-17
+            }
+          }
+        }
+      ],
+      "commercial": {
+        "id": "c557206e-e79d-4be6-9c96-75a4f9220d3e",
+        "masterId": "0e6fa212-f2d9-44a8-a881-85df6fbe3d7e",
+        "salesPrice": 0,
+        "purchasePrice": 0,
+        "properties": []
+      },
+      "status": {
+        "code": 200
+      }
+    },
+    {
+      "kind": "Product",
+      "state": {
+        "comId": "17de4c05-8f24-45e6-b64f-9b9c287b9ffd",
+        "geometricHash": "#1295119384",
+        "visualHash": "#-1695618958"
+      },
+      "transform": {
+        "position": {
+          "x": -0.30000001192092896,
+          "y": 0.0,
+          "z": 0.10000000149011612
+        },
+        "rotation": {
+          "x": 0.0,
+          "y": 0.08715574274765817,
+          "z": 0.0,
+          "w": 0.9961946980917455
+        }
+      },
+      "materialCategories": {
+        "IG.Beds.Wood": "IG.Beds.Eiche",
+        "IG.Beds.Metal": "IG.Beds.Chrom",
+        "IG.Beds.Cover": null,
+        "IG.Beds.CoverKT": null,
+        "IG.Beds.Cover_KT": null,
+        "IG.Beds.KT_Mat": "IG.Beds.Stoff_elfenbein",
+        "IG.Beds.BK_Mat": "IG.Beds.Stoff_weiss",
+        "IG.Showcase.Wood": "IG.Beds.Buche_Lack",
+        "IG.Showcase.Metal": "IG.Beds.Chrom",
+        "@IG.Beds.Metal_Black": "IG.Beds.Metal_Black",
+        "@IG.Beds.Edelstahl": "IG.Beds.Edelstahl"
+      },
+      "categories": [],
+      "structure": [
+        {
+          "path": ".",
+          "visible": true,
+          "selectable": "Self",
+          "deformation": 0.0
+        },
+        {
+          "path": "o1",
+          "visible": true,
+          "geometry": "IG.Beds.Lamp_black",
+          "deformation": 0.0,
+          "materialCategory": "@IG.Beds.Metal_Black"
+        },
+        {
+          "path": "o1.o1",
+          "visible": true,
+          "geometry": "IG.Beds.Lamp_silver",
+          "deformation": 0.0,
+          "materialCategory": "@IG.Beds.Edelstahl"
+        }
+      ],
+      "commercial": {
+        "id": "17de4c05-8f24-45e6-b64f-9b9c287b9ffd",
+        "masterId": "0e6fa212-f2d9-44a8-a881-85df6fbe3d7e",
+        "salesPrice": 0,
+        "purchasePrice": 0,
+        "properties": []
+      },
+      "status": {
+        "code": 200
+      }
+    },
+    {
+      "kind": "Product",
+      "state": {
+        "comId": "57b78c03-a189-4d44-b056-334290cbe9ca",
+        "geometricHash": "#1295119384",
+        "visualHash": "#1385526215"
+      },
+      "transform": {
+        "position": {
+          "x": 1.6299999952316284,
+          "y": 0.0,
+          "z": 0.10000000149011612
+        },
+        "rotation": {
+          "x": 0.0,
+          "y": -0.043619387365336,
+          "z": 0.0,
+          "w": 0.9990482215818578
+        }
+      },
+      "materialCategories": {
+        "IG.Beds.Wood": "IG.Beds.Eiche",
+        "IG.Beds.Metal": "IG.Beds.Chrom",
+        "IG.Beds.Cover": null,
+        "IG.Beds.CoverKT": null,
+        "IG.Beds.Cover_KT": null,
+        "IG.Beds.KT_Mat": "IG.Beds.Stoff_elfenbein",
+        "IG.Beds.BK_Mat": "IG.Beds.Stoff_weiss",
+        "IG.Showcase.Wood": "IG.Beds.Buche_Lack",
+        "IG.Showcase.Metal": "IG.Beds.Chrom",
+        "@IG.Beds.Metal_Black": "IG.Beds.Metal_Black",
+        "@IG.Beds.Leimholz": "IG.Beds.Leimholz",
+        "@IG.Beds.Glas3": "IG.Beds.Glas3"
+      },
+      "categories": [],
+      "structure": [
+        {
+          "path": ".",
+          "visible": true,
+          "selectable": "Self",
+          "deformation": 0.0
+        },
+        {
+          "path": "o1",
+          "visible": true,
+          "geometry": "IG.Beds.Tisch_foot",
+          "deformation": 0.0,
+          "materialCategory": "@IG.Beds.Metal_Black",
+          "transform": {
+            "position": {
+              "x": 0.05000000074505806,
+              "y": 0.0,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "path": "o2",
+          "visible": true,
+          "geometry": "IG.Beds.Tisch_top",
+          "deformation": 0.0,
+          "materialCategory": "@IG.Beds.Leimholz",
+          "transform": {
+            "position": {
+              "x": 0.0,
+              "y": 0.39800000190734863,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "path": "o3",
+          "visible": true,
+          "geometry": "IG.Beds.Tisch_in",
+          "deformation": 0.0,
+          "materialCategory": "IG.Beds.Wood",
+          "transform": {
+            "position": {
+              "x": 0.0,
+              "y": 0.39800000190734863,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "path": "o4",
+          "visible": true,
+          "geometry": "IG.Beds.Tablett_01",
+          "deformation": 0.0,
+          "materialCategory": "@IG.Beds.Glas3",
+          "transform": {
+            "position": {
+              "x": 0.25,
+              "y": 0.4189999997615814,
+              "z": 0.20000000298023224
+            },
+            "scale": {
+              "x": 0.699999988079071,
+              "y": 1.0,
+              "z": 0.699999988079071
+            }
+          }
+        },
+        {
+          "path": "o5",
+          "visible": true,
+          "geometry": "IG.Beds.Glass_01",
+          "deformation": 0.0,
+          "materialCategory": "@IG.Beds.Glas3",
+          "transform": {
+            "position": {
+              "x": 0.25,
+              "y": 0.42500001192092896,
+              "z": 0.20000000298023224
+            }
+          }
+        }
+      ],
+      "commercial": {
+        "id": "57b78c03-a189-4d44-b056-334290cbe9ca",
+        "masterId": "0e6fa212-f2d9-44a8-a881-85df6fbe3d7e",
+        "salesPrice": 0,
+        "purchasePrice": 0,
+        "properties": []
+      },
+      "status": {
+        "code": 200
+      }
+    },
+    {
+      "kind": "Set",
+      "commercial": {
+        "id": "0e6fa212-f2d9-44a8-a881-85df6fbe3d7e",
+        "salesPrice": 0,
+        "purchasePrice": 0,
+        "properties": [
+          {
+            "propertyId": "SET",
+            "propertyText": {
+              "*": "Holzbett"
+            },
+            "valueId": "Holzbett",
+            "valueText": {
+              "*": "Holzbett"
+            },
+            "position": 0
+          },
+          {
+            "propertyId": "Breite2",
+            "propertyText": {
+              "*": "Bett-Breite"
+            },
+            "valueId": "140",
+            "valueText": {
+              "*": "140"
+            },
+            "position": 0
+          },
+          {
+            "propertyId": "Tiefe",
+            "propertyText": {
+              "*": "Bett-Tiefe"
+            },
+            "valueId": "200",
+            "valueText": {
+              "*": "200"
+            },
+            "position": 0
+          },
+          {
+            "propertyId": "KT_HB",
+            "propertyText": {
+              "*": "Kopfteil"
+            },
+            "valueId": "KT_HB_01",
+            "valueText": {
+              "*": "KT 1"
+            },
+            "position": 0
+          },
+          {
+            "propertyId": "KT_Mat",
+            "propertyText": {
+              "*": "Kopfteil Material"
+            },
+            "valueId": "Stoff_elfenbein",
+            "valueText": {
+              "*": "Stoff, elfenbein"
+            },
+            "position": 0
+          },
+          {
+            "propertyId": "Wood",
+            "propertyText": {
+              "*": "Bett Material"
+            },
+            "valueId": "Eiche",
+            "valueText": {
+              "*": "Eiche"
+            },
+            "position": 0
+          },
+          {
+            "propertyId": "Metal",
+            "propertyText": {
+              "*": "Fuss Material"
+            },
+            "valueId": "Kupfer",
+            "valueText": {
+              "*": "Kupfer"
+            },
+            "position": 0
+          },
+          {
+            "propertyId": "Nachtschraenke",
+            "propertyText": {
+              "*": "Nachtschränke"
+            },
+            "valueId": "Typ_1",
+            "valueText": {
+              "*": "Lampe + Tisch"
+            },
+            "position": 0
+          },
+          {
+            "propertyId": "ZUB",
+            "propertyText": {
+              "*": "Zubehör"
+            },
+            "valueId": "Yes",
+            "valueText": {
+              "*": "mit"
+            },
+            "position": 0
+          }
+        ]
+      },
+      "status": {
+        "code": 200
+      }
+    }
+  ]
+}

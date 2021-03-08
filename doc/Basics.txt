@@ -1,0 +1,17 @@
+Some basics regarding coordinates in OpenConfiguration
+
+The coordinate system is the OpenGL one, where
+x points to the right,
+y points up,
+z points towards the reader   
+
+The UV coordinates start at the lower left corner like that:
+0,1               1,1
+ | 
+ |
+0,0---------------1,0
+
+Quaternions, Matrices etc. are designed to be used like the three.js Webgl library does its basic operations.
+So if in doubt you can actually use three.js to get examples of transformations etc.
+
+Empty lists and empty dictionaries are explicitly allowed. Unlike the GLTF spec that forbids empty lists.

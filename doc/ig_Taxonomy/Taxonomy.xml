@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MATZ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noname_despaceSchemaLocation="Taxonomy.xsd" >
+	<MaterialGroup id="wd" name="Wood" name_de="Holz">	
+		<Material id="oak" name="Oak" name_de="Eiche"></Material>
+		<Material id="beech" name="Beech" name_de="Buche"></Material>
+		<Material id="spruc" name="Spruce" name_de="Fichte"></Material>
+		<Material id="pine" name="Pine" name_de="Kiefer"></Material>
+		<Material id="maple" name="Maple" name_de="Ahorn"></Material>
+		<Material id="chry" name="Cherry" name_de="Kirsche"></Material>
+		<Material id="teak" name="Teak" name_de="Teak"></Material>
+		<Coating id="nc"></Coating>
+		<Coating id="wa"></Coating>
+		<Coating id="sh"></Coating>
+		<Coating id="fi"></Coating>
+		<Coating id="oi"></Coating>
+		<Coating id="pu"></Coating>
+		<Coating id="ep"></Coating>
+		<Parameter id="rou"></Parameter>
+		<Parameter id="bri"></Parameter>
+		<Parameter id="con"></Parameter>
+	</MaterialGroup>
+	<MaterialGroup id="mt" name="Metal" name_de="Metall">
+		<Material id="alu" name="Aluminium" name_de="Aluminium"></Material>
+		<Material id="hqust" name="High Quality Steel" name_de="Edelstahl"></Material>
+		<Material id="iron" name="Iron" name_de="Eisen"></Material>
+		<Material id="coppr" name="Copper" name_de="Kupfer"></Material>
+		<Material id="brass" name="Brass" name_de="Messing"></Material>
+		<Material id="gold" name="Gold" name_de="Gold"></Material>
+		<Material id="silvr" name="Silver" name_de="Silber"></Material>
+		<Material id="chro" name="Chrome" name_de="Chrom"></Material>
+		<Coating id="nc"></Coating>
+		<Coating id="fi"></Coating>
+		<Coating id="pu"></Coating>
+		<Coating id="ep"></Coating>
+		<Coating id="el"></Coating>
+		<Coating id="an"></Coating>
+		<Coating id="pc"></Coating>
+		<Parameter id="rou"></Parameter>
+		<Parameter id="bri"></Parameter>
+		<Parameter id="col" ></Parameter>
+	</MaterialGroup>
+	<MaterialGroup id="pl" name="Plastic" name_de="Kunststoff">
+		<Material id="pvc" name="PVC" name_de="PVC"></Material>
+		<Material id="polye" name="Polyester" name_de="Polyester"></Material>
+		<Parameter id="rou"></Parameter>
+	</MaterialGroup>
+	<MaterialGroup id="min" name="Mineral" name_de="Anorganisch">
+		<Material id="ceram" name="Ceramic" name_de="Keramik"></Material>
+		<Material id="marbl" name="Marble" name_de="Marmor"></Material>
+		<Material id="concr" name="Concrete" name_de="Beton"></Material>
+	</MaterialGroup>
+	<MaterialGroup id="cov" name="Covers" name_de="Bezuege">
+		<Material id="leath" name="Leather" name_de="Leder"></Material>
+		<Material id="fabri" name="Fabric" name_de="Stoff"></Material>
+		<Material id="velv" name="Velvet" name_de="Samt"></Material>
+		<Parameter id="rou"></Parameter>
+		<Parameter id="fre"></Parameter>
+	</MaterialGroup>
+	<MaterialGroup id="tr" name="Transparent" name_de="Transparent">
+		<Material id="glass" name="Glass" name_de="Glas"></Material>
+		<Parameter id="rou"></Parameter>
+		<Parameter id="ref"></Parameter>
+	</MaterialGroup>
+	<MaterialGroup id="misc" name="Other" name_de="Sonstiges">
+		<Material id="paper" name="Paper" name_de="Papier"></Material>
+		<Coating id="nc"></Coating>
+		<Coating id="oi"></Coating>
+		<Coating id="fi"></Coating>
+		<Coating id="sh"></Coating>
+	</MaterialGroup>
+
+	<Coating id="nc" name="None" name_de="Ohne"></Coating>
+	<Coating id="wa" name="Wax" name_de="Wachs"></Coating>
+	<Coating id="sh" name="Shellac" name_de="Schellack"></Coating>
+	<Coating id="fi" name="Finish" name_de="Lack"></Coating>
+	<Coating id="oi" name="Oil" name_de="Öl"></Coating>
+	<Coating id="pu" name="Polyurethan" name_de="Polyurethan"></Coating>
+	<Coating id="ep" name="Epoxide Resin" name_de="Epoxidharz"></Coating>
+	<Coating id="el" name="Electroplating" name_de="Galvanisieren"></Coating>
+	<Coating id="an" name="Anodization" name_de="Eloxieren"></Coating>
+	<Coating id="pc" name="Powder Coating" name_de="Pulverbeschichten"></Coating>
+
+	<Parameter id="rou" type="Float" minimum="0.0" maximum="1.0" default="0.5" name="Roughness"></Parameter>
+	<Parameter id="fre" type="Float" name="Fresnell Reflection"></Parameter>
+	<Parameter id="col" type="Color" minimum="0, 0, 0" maximum="1.0, 1.0, 1.0" default="0.5, 0.5, 0.6" name="Base Color"></Parameter>
+	<Parameter id="bri" type="Float" minimum="0.0" maximum="1.0" default="0.5" name="Material Brightness"></Parameter>
+	<Parameter id="con" type="Float" minimum="0.0" maximum="1.0" default="0.5" name="Material Contrast"></Parameter>
+	<Parameter id="ref" type="Float" minimum="0.01" maximum="3.0" default="1.0" name="Refraction"></Parameter>
+</MATZ>

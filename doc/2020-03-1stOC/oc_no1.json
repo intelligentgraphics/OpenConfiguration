@@ -1,0 +1,142 @@
+{
+  "format": "OpenConfiguration_1.0 PRE",
+  "creator": "IG.Mobile.GfxEngine.Net 1.4 (1.4.0.100)",
+  "valid": true,
+  "status": null,
+  "basePath": "http://127.0.0.1:5002/graphics/asset/",
+  "hashes": {
+    "IG.Math.js": "bb3fa68aaba91cf5016dc26f7f6c0c71",
+    "IG.GFX.Standard.js": "5e9f7d57ce9ad27ceea37b77218ac2de",
+    "IG.KinematicsInt.js": "6deee593675bb2120cf79f51ae1e52d5",
+    "IG/Reference/Cube2.geo/standard.ctm": "ed085dd38a0d2639d97bb0802932d8b2",
+    "IG/Reference/Cube2.geo/normals_standard.png": "66da0bbb3659bb39e02cd556b0539f0d",
+    "IG/Reference/Cube2.geo/lowres.obj": "7a9ed958fb8e71eab84e2f37ef67b54e",
+    "IG/Reference/Grid.tex/standard.jpeg": "a4a234e14a23839ae507aa420fd5fcf2"
+  },
+  "scripts": [
+    {
+      "name": "IG.Math",
+      "mode": "Interactor",
+      "version": "1.0.0.100",
+      "runTime": true,
+      "path": "IG.Math.js"
+    },
+    {
+      "name": "IG.GFX.Standard",
+      "mode": "Interactor",
+      "version": "1.7.0.100",
+      "runTime": true,
+      "path": "IG.GFX.Standard.js"
+    },
+    {
+      "name": "IG.KinematicsInt",
+      "mode": "Interactor",
+      "version": "1.1.0.1",
+      "runTime": true,
+      "path": "IG.KinematicsInt.js"
+    }
+  ],
+  "geometries": {
+    "IG.Reference.Cube2": {
+      "ig": {
+        "previewFormat": "OBJ",
+        "preview": "IG/Reference/Cube2.geo/lowres.obj",
+        "meshFormat": "OpenCTM",
+        "mesh": "IG/Reference/Cube2.geo/standard.ctm",
+        "normalMapFormat": "PNG",
+        "normalMap": "IG/Reference/Cube2.geo/normals_standard.png",
+        "deformationFormat": null,
+        "deformation": null,
+        "parameters": null
+      },
+      "cns": null
+    }
+  },
+  "geometryIndexes": null,
+  "materials": {
+    "IG.Reference.Grid": {
+      "ig": {
+        "ambient": 0.098,
+        "diffuseR": 0.6275000000000001,
+        "diffuseG": 0.36860000000000004,
+        "diffuseB": 0.4431,
+        "specularR": 0.0,
+        "specularG": 0.0,
+        "specularB": 0.0,
+        "emissiveR": 0.0,
+        "emissiveG": 0.0,
+        "emissiveB": 0.0,
+        "shininess": 1.0,
+        "transparency": 0.0,
+        "diffuse": {
+          "mapFormat": "JPEG",
+          "map": "IG/Reference/Grid.tex/standard.jpeg",
+          "mapping": null
+        },
+        "specular": null,
+        "normal": null,
+        "roughness": null,
+        "mapping": {
+          "translationS": 0.0,
+          "translationT": 0.0,
+          "rotation": 0.0,
+          "scaleS": 1.0,
+          "scaleT": 1.0
+        }
+      }
+    }
+  },
+  "materialIndexes": null,
+  "products": [
+    {
+      "state": {
+        "comId": "1db27ac9-0339-4f08-b710-d82cf10018bd",
+        "gfxId": null,
+        "geometricHash": "#-827495796",
+        "visualHash": "#5583932"
+      },
+      "transform": {
+        "position": null,
+        "rotation": null,
+        "scale": null
+      },
+      "materialCategories": {
+        "@IG.Reference.Grid": "IG.Reference.Grid"
+      },
+      "categories": [],
+      "structure": [
+        {
+          "path": ".",
+          "visible": true,
+          "selectable": "Self",
+          "geometry": null,
+          "geometryParameters": null,
+          "deformation": 0.0,
+          "layer": null,
+          "materialCategory": null,
+          "mapping": null,
+          "transform": null,
+          "interactor": null,
+          "interactorParameters": null,
+          "options": null
+        },
+        {
+          "path": "o1",
+          "visible": true,
+          "selectable": null,
+          "geometry": "IG.Reference.Cube2",
+          "geometryParameters": null,
+          "deformation": 0.0,
+          "layer": null,
+          "materialCategory": "@IG.Reference.Grid",
+          "mapping": null,
+          "transform": null,
+          "interactor": null,
+          "interactorParameters": null,
+          "options": null
+        }
+      ],
+      "points": null
+    }
+  ]
+}

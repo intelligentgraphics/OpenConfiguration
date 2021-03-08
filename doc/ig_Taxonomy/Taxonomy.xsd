@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="MATZ" type="Taxonomy"/>
+
+		<xs:complexType name="Taxonomy">
+			<xs:sequence>
+				<xs:element name="MaterialGroup" type="MaterialGroup" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element name="Coating" type="CoatingDef" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element name="Parameter" type="ParameterDef" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+
+		<xs:complexType name="MaterialGroup">
+			<xs:sequence>
+				<xs:element name="Material" type="Material" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element name="Coating" type="CoatingRef" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element name="Parameter" type="ParameterRef" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required" />
+			<xs:attribute name="name" type="xs:string" use="required" />
+			<xs:attribute name="name_de" type="xs:string" use="optional" />
+		</xs:complexType>
+
+		<xs:complexType name="Material">
+			<xs:attribute name="id" type="xs:string" use="required" />
+			<xs:attribute name="name" type="xs:string" use="required" />
+			<xs:attribute name="name_de" type="xs:string" use="optional" />
+		</xs:complexType>
+
+		<xs:complexType name="CoatingDef">
+			<xs:attribute name="id" type="xs:string" use="required" />
+			<xs:attribute name="name" type="xs:string" use="required" />
+			<xs:attribute name="name_de" type="xs:string" use="optional" />
+		</xs:complexType>
+
+		<xs:complexType name="CoatingRef">
+			<xs:attribute name="id" type="xs:string" use="required" />
+		</xs:complexType>
+
+		<xs:complexType name="ParameterDef">
+			<xs:attribute name="id" type="xs:string" use="required" />
+			<!-- type: Float, Color, Choice -->
+			<xs:attribute name="type" type="xs:string" use="required" />
+			<xs:attribute name="minimum" type="xs:string" use="required" />
+			<xs:attribute name="maximum" type="xs:string" use="required" />
+			<xs:attribute name="default" type="xs:string" use="required" />
+			<!-- values: only used for type Choice -->
+			<xs:attribute name="values" type="xs:string" use="optional" />
+			<xs:attribute name="name" type="xs:string" use="required" />
+			<xs:attribute name="name_de" type="xs:string" use="optional" />
+		</xs:complexType>
+			
+		<xs:complexType name="ParameterRef">
+			<xs:attribute name="id" type="xs:string" use="required" />
+			<xs:attribute name="minimum" type="xs:string" use="optional" />
+			<xs:attribute name="maximum" type="xs:string" use="optional" />
+			<xs:attribute name="default" type="xs:string" use="optional" />
+			<xs:attribute name="values" type="xs:string" use="optional" />
+		</xs:complexType>
+
+</xs:schema>
