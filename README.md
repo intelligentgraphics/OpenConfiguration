@@ -25,6 +25,14 @@ OC is NOT a graphical exchange format like FBX or glTF containing plenty of obsc
 
 **OpenConfiguration 1.0** - Initial Version
 
+## Todos
+
+- neutral animation API (currently a proprietary ig API is used, which maybe a starting point for some more neutral one)
+
+- roundtrip modes: currently there's either a full roundtrip or a non-geometric one on product level. Seems there's a need for an update of interactor parameters as 3rd roundtrip mode)
+
+- provide JSON Schema for OC
+
 ## Basic Structure (Scene.ts)
 
 An OC contains a list of products, a dictionary of geometries and a dictionary of materials. 
@@ -159,16 +167,19 @@ Products are a list of article with some basic commercial information.
 Structure is a list of nodes, describing a scenegraph for a product.
 It is a flat list of nodes. The position of a node in the tree is encoded 
 in its path. The root is ".". Children of the root have a path without dots,
-eg "o1" or "e2". Grandchildren of the root have exactly one dot, e.g. "o1.o56"
+eg "o1" or "e2". Grand children of the root have exactly one dot, e.g. "o1.o56"
 All ancestors of a given node have to be in the list before them.
 
-Geometry links an entry in the geometries dictionary as described above.
+Geometry links to an entry in the geometries dictionary as described above.
 
-MaterialCategory links an entry in the materialCategories dirctionary or 
+A MaterialCategory links an entry in the materialCategories dirctionary or 
 (if starting with an "@") links directly to an entry of the materials 
-dictionary above.
+dictionary above. A material category introduces some indirection that is useful
+for later material-only updates. To avoid the need of material categories even
+for static material assignments, the "@" prefix was defined. If you clip the
+leading "@" from a material category, you get the material.
 
-MaterialCategories can be used to give more then one node a certain material,
+Material categories can be used to give more then one node a certain material,
 e.g. all 4 feet nodes of a table could have  
 "materialCategory":"feetColor" and the materialsCategories could have a suitable
 entry like "feetColor":"Example.Materials.OakWood".
