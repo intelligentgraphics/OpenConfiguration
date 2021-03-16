@@ -1,4 +1,4 @@
-Overview of the OpenConfiguration Format
+Welcome to OpenConfiguration!
 
 ## Quickstart
 ### TypeScript (TS)
@@ -27,11 +27,11 @@ OC is NOT a graphical exchange format like FBX or glTF containing plenty of obsc
 
 ## Todos
 
-- neutral animation API (currently a proprietary ig API is used, which maybe a starting point for some more neutral one)
+- T1 neutral animation API (currently a proprietary ig API is used, which maybe a good starting point for a more neutral API) [eb@ig]
 
-- roundtrip modes: currently there's either a full roundtrip or a non-geometric one on product level. Seems there's a need for an update of interactor parameters as 3rd roundtrip mode)
+- T2: roundtrip modes: currently there's either a full roundtrip or a non-geometric one on product level. Seems there's a need for an update of interactor parameters as 3rd roundtrip mode) [eb@ig]
 
-- provide JSON Schema for OC
+- T3: provide JSON Schema for OC [eb@ig]
 
 ## Basic Structure (Scene.ts)
 
@@ -189,4 +189,8 @@ Selectable indicates if the node can be selected in a viewer or together
 with its parents or not at all.
 
 Deformation is the initial state (0...1) of possibly attached deformation 
-lattices. The 0 in this example is the default value i.e. "leave mesh as given". 
+lattices. The 0 in this example is the default value i.e. "leave mesh as given".
+
+## Copyright
+
+For OpenConfiguration 1.0 applies: Copyright (C) 2020 - 2021 intelligentgraphics AG. All Rights Reserved.
