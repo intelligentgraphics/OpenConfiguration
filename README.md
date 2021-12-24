@@ -96,12 +96,10 @@ Scripts can be attached for viewer interactions and animations. The scripts are 
 
 Geometries is a dictionary of geometric entities. Inside there is another dictionary of different optional representations. "ig" is usually used for mesh-based viewers. mesh and meshFormat describe the actual mesh.
 
-Currently supported mesh formats are OBJ, OpenCTM, FBX and OGRE Binary. A viewer incompatible with one ore more of the formats should refuse to load the OC and show an appropriate message to the user.
+Currently supported mesh formats are OBJ, OpenCTM, FBX and OGRE Binary. A viewer incompatible with one ore more of the formats should refuse to load the OC and show an appropriate message to the user. The primary mesh format and fallbacks, as well as the quality level are normally negotiated between client and server at run-time.
 
-OpenCTM files describe triangle/mesh data including 2 UV sets for texturing. The first set ("Diffuse") is used for tile-able material textures (see below).
-The second set ("Object") is not tileable (i.e. every triangle gets its own part of the actual texture) and used for a GeoNormalMap. 
-
-The Normalmap adds fine details to the whole geometry (cf. GeoNormalMap) and is rendered using the second UV set of the OpenCTM. It is NOT tileable.
+OpenCTM files describe triangle/mesh data including up to 2 UV sets for texturing. The set tagged with "Diffuse" is used for tile-able material textures (see below).
+The set tagged with "Object" is not tileable (i.e. every triangle gets its own part of the actual texture) and used for a geometry-bound normal map, which typically adds geometry details.
 
 For fast overview purposes, "preview" can link a coarse geometry.
 
@@ -111,8 +109,8 @@ For fast overview purposes, "preview" can link a coarse geometry.
 			"ig": {
 				"diffuse": {
 					"color": {
-						"red": 0.62750000000000006,
-						"green": 0.36860000000000004,
+						"red": 0.6275,
+						"green": 0.3686,
 						"blue": 0.4431
 					},
 					"map": {
@@ -133,7 +131,7 @@ Materials are described in a dictionary. Each Material can have different repres
 The ig description is based on a classical Phong model with its respective properties.
 For simple or resource limited viewers, this also serves as a starting or fallback point.
 
-Beyond this simple example, there are some advanced properties (e.g. roughness maps) and 
+Beyond this simple example, there are some advanced (PBR) properties (e.g. roughness maps) and 
 taxonomies defined. Taxonomies define materials and leave the renderer great freedom
 how to implement them. 
 
@@ -167,27 +165,22 @@ how to implement them.
 }
 ```
 
-Products are a list of article with some basic commercial information.
-Structure is a list of nodes, describing a scenegraph for a product.
-It is a flat list of nodes. The position of a node in the tree is encoded 
-in its path. The root is ".". Children of the root have a path without dots,
-eg "o1" or "e2". Grandchildren of the root have exactly one dot, e.g. "o1.o56"
-All ancestors of a given node have to be in the list before them.
+The primary organization of the graphical representation are Products, which are placed relative to each other. Normally, a Product corresponds 1:1 to a commercial product but there're quite some options to convert a multi-product configuration into an OC. Sometimes this can even be controlled by the user.
 
-Geometry links an entry in the geometries dictionary as described above.
+A Product has a Structure definition (until it's a material-only update). The Structure is a list of nodes, describing a hierarchical scene graph for a product. Syntactically, however, it is a flat list of nodes. The position of a node in the tree is encoded in its path. The root is ".". Children of the root have a path without dots,
+e.g. "o1" or "e2". Grand children of the root have exactly one dot, e.g. "o1.o1". All ancestors of a given node have to be in the list before that node.
 
-MaterialCategory links an entry in the materialCategories dirctionary or 
-(if starting with an "@") links directly to an entry of the materials 
-dictionary above.
+"Geometry" links an entry in the geometries dictionary as described above.
 
-MaterialCategories can be used to give more then one node a certain material,
-e.g. all 4 feet nodes of a table could have  
-"materialCategory":"feetColor" and the materialsCategories could have a suitable
-entry like "feetColor":"Example.Materials.OakWood".
+A "MaterialCategory" is a concept to implement light-weight model updates that only change materials. You can think of a Material Category as a route for Materials to Geometries. The key in materialCategories is a material category, the value is a material. For static material use on a geometry, the @ prefix has been introduced for convenience. A material category starting with @ refers directly to a material with the same name (but without the @).
 
-Visible indicates if the geometry of a node is actually rendered.
-Selectable indicates if the node can be selected in a viewer or together 
+The property "Visible" indicates if the geometry of a node is actually rendered.
+
+The property "Selectable" indicates if the node can be selected in a viewer or together 
 with its parents or not at all.
 
-Deformation is the initial state (0...1) of possibly attached deformation 
-lattices. The 0 in this example is the default value i.e. "leave mesh as given". 
+Finally, "Deformation" describes the deformation of the associated mesh in the range from 0.0 to 1.0, where 0 is by definition the undeformed mesh.
+
+## Copyright
+
+Copyricht (C) 2020 - 2021 intelligentgraphics AG. All Rights Reserved.
