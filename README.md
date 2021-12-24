@@ -9,7 +9,7 @@ npm i @intelligentgraphics/openconfiguration
 
 ### .NET
 
-Add Muget package:
+Add Nuget package:
 
 ```
 https://www.nuget.org/packages/OpenConfiguration/
