@@ -1,15 +1,19 @@
 Overview of the OpenConfiguration Format
 
 ## Quickstart
-### TypeScript (TS)
+### TypeScript/JavaScript
+
 ```sh
 npm i @intelligentgraphics/openconfiguration
 ```
 
-or use files from [`dist/ts`](dist/ts)
+### .NET
 
-### CS
-add DLL from [`dist/cs`](dist/cs)
+Add muget package:
+
+```
+https://www.nuget.org/packages/OpenConfiguration/
+```
 
 ## Goals
 
