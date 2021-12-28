@@ -27,7 +27,13 @@ OC is NOT a graphical exchange format like FBX or glTF containing plenty of obsc
 
 ## History
 
-**OpenConfiguration 1.1** - Minor Update
+**OpenConfiguration 1.2**
+
+- Scene: Source added
+- Product: TopView and Preview added
+- Product: Representations (introduced in 1.1) removed again - BREAKING CHANGE
+
+**OpenConfiguration 1.1**
 
 - Product: Representations: Preview and Top View
 - ig Geometry: new asset collider (format + asset)
@@ -35,7 +41,7 @@ OC is NOT a graphical exchange format like FBX or glTF containing plenty of obsc
 - ig Geometry Parameters: Normal Map Tiling and Strength
 - Component: new attribute tag
 
-**OpenConfiguration 1.0** - Initial Version
+**OpenConfiguration 1.0**
 
 ## Basic Structure (Scene.ts)
 
@@ -183,4 +189,4 @@ Finally, "Deformation" describes the deformation of the associated mesh in the r
 
 ## Copyright
 
-Copyricht (C) 2020 - 2021 intelligentgraphics AG. All Rights Reserved.
+Copyricht (C) 2020 - 2022 intelligentgraphics AG. All Rights Reserved.
