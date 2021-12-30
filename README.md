@@ -23,9 +23,16 @@ OC was defined with a strict focus on efficiency. This is achieved on the one ha
  
 ## Non-Goals
 
-OC is NOT a graphical exchange format like FBX or glTF containing plenty of obscure features to be written and read by modeling programs like Blender.
+OC is NOT a graphical exchange format like FBX or glTF containing plenty of obscure features to be written and red by modeling programs like Blender.
 
 ## History
+
+**OpenConfiguration 1.2.5**
+
+- Script: Technical Version added, to implement version checks
+- Scene: Source (introduced in 1.2) removed again. Use ConfigurationLink instead - BREAKING CHANGE
+- Scene: ComProducts added
+- Commercial: Quantity and Products added
 
 **OpenConfiguration 1.2**
 
