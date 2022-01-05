@@ -27,6 +27,11 @@ OC is NOT a graphical exchange format like FBX or glTF containing plenty of obsc
 
 ## History
 
+**OpenConfiguration 1.2.6**
+
+- [.NET] Core.XImage: volatile property Hash added
+- Scene: Redirections added
+
 **OpenConfiguration 1.2.5**
 
 - Script: Technical Version added, to implement version checks
