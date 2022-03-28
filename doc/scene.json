@@ -1,0 +1,1209 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Scene",
+  "description": "The Scene is the central part of an OC data set. Each OC data set contains exactly one.\n\nA Scene may contain initial product representations and/or updates.\n\nA Scene may contain products that should be inserted instantly, as well as add-ons to be inserted later on and shown as placeholders before.",
+  "type": "object",
+  "required": [
+    "format",
+    "hashes",
+    "products",
+    "status"
+  ],
+  "properties": {
+    "basePath": {
+      "description": "The optional attribute provides a partial URI to be added to all relative asset uris. A valid base path should normally start with https:// or file://, and end with either a slash or the path separator character of the operating system. \"Relative\" basePath is always relative to the scene.json path, not to an application/deployment specific one! example.configurator.com/assets/oc/scene.json containing \"tex.jpg\" basepathes \"gfx\", \"./gfx\", \"/gfx\" are all resolved to the same example.configurator.com/assets/oc/gfx/tex.jpg",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "camera": {
+      "description": "An optional camera setup to restore the camera in another viewer.",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Camera"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "catalog": {
+      "description": "Optional, embedded catalog.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/definitions/CatalogEntry"
+      }
+    },
+    "comProducts": {
+      "description": "Commercial products without an own visual representation.\n\nVersion: OC 1.3",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/definitions/Commercial"
+      }
+    },
+    "configurationId": {
+      "description": "This optional attribute may contain the id of a server-side session.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "configurationLink": {
+      "description": "This optional attribute may contain the link of the original configuration.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "creator": {
+      "description": "This optional attribute contains informal information about the creator of this OC data set.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "format": {
+      "description": "The mandatory attribute format must be structured as follows:\n\n\"OpenConfiguration_<Major/>.<Minor/> [PRE]\"\n\nLegal combinations of <Major/>.<Minor/> are: 1.0, 1.1 and 1.2\n\nThe optional postfix \" PRE\" marks a preliminary format.",
+      "type": "string"
+    },
+    "geometries": {
+      "description": "The optional attribute provides an embedded geometry index.\n\nIGXC Compatibility: now it's embedded, self-contained geometries rather than just geometry names. Thus, separate assignments of geometry normal maps, deformations, etc. are removed. Also, the embedded geometry definition is optional. There can be external geometry definitions, too.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "$ref": "#/definitions/Geometry"
+      }
+    },
+    "geometryIndexes": {
+      "description": "The optional attribute provides links to external geometry indices. The key should be a two-level technical namespace to speedup the geometry lookup. The value must be an absolute or relative URI. The content of the value, must be de-serialized as GeometryIndex.\n\nIGXC Compatibility: In IGXC, this concept did not exist.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "hashes": {
+      "description": "The mandatory attribute provides unique content hashes for assets that are directly referenced in the OC data set. The specific hash algorithm is unspecified. It may be an MD5 hash of the binary content for instance. But low-res assets may use the same hash as the originals, they are derived from. So, the only operation that is legal for hash, is to compare them with an optionally existing one.\n\nAll assets should have an entry here as downloaders may iterate through this record rather than exploring the other data entities.",
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "materialIndexes": {
+      "description": "The optional attribute provides links to external geometry indices. The key should be a two-level technical namespace to speedup the geometry lookup. The value must be an absolute or relative URI. The content of the value, must be de-serialized as MaterialIndex.\n\nIGXC Compatibility: In IGXC, this concept did not exist.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "materials": {
+      "description": "The optional attribute provides an embedded geometry index.\n\nIGXC Compatibility: The embedded material definition is optional. There can be external material definitions, too.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "$ref": "#/definitions/Material"
+      }
+    },
+    "products": {
+      "description": "The mandatory attribute contains the products to be inserted into/ updated in the client world.\n\nIGXC Compatibility: in IGXC, there is only one product.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Product"
+      }
+    },
+    "redirections": {
+      "description": "Redirections maybe needed to convert absolute asset urls into file names, especially when compiling a self-contained OC zip. The attribute is optional.\n\nVersion: OC 1.3",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "representations": {
+      "description": "The representations of the scene. Legal values are:\n\n\"Standard\" - Real-time mesh data.\n\n\"CAD_BIM\" - CAD/BIM volume bodies.\n\n\"Photo\" - High-resolution mesh data.\n\nThis just lists possible usages and can be used for fast filtering, it does not influence the actual data. A \"Photo\" renderer would still use meshes attached as geometry.mesh",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/definitions/Representation"
+      }
+    },
+    "scripts": {
+      "description": "The optional attribute contains all client-side JavaScript packages.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/definitions/Script"
+      }
+    },
+    "status": {
+      "description": "This attribute contains general status information about the Scene contents.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Status"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "AttachPoint": {
+      "description": "An attachment point for planning support and placement of children. All attributes are mandatory.\n\nIGXC Compatibility: the Rotation is changed to Quaternion, in IGXC it was Euler-based.",
+      "type": "object",
+      "required": [
+        "enabled",
+        "foreign",
+        "key",
+        "point",
+        "representation",
+        "rotation",
+        "type"
+      ],
+      "properties": {
+        "enabled": {
+          "description": "Attribute controls if the point is enabled. If disabled, it should be invisible too.",
+          "type": "boolean"
+        },
+        "foreign": {
+          "description": "Allowed keys of counterpart's points. May contain /// and ? characters.",
+          "type": "string"
+        },
+        "key": {
+          "description": "Own key of the point. Should match the counterpart's foreign key.",
+          "type": "string"
+        },
+        "point": {
+          "description": "The position of the point, relative to the Product.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Vector3"
+            }
+          ]
+        },
+        "representation": {
+          "description": "The visual representation of the attachment point.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/AttachPointRepresentation"
+            }
+          ]
+        },
+        "rotation": {
+          "description": "The orientation of the point, relative to the Product.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Quaternion"
+            }
+          ]
+        },
+        "type": {
+          "description": "The type of the point",
+          "allOf": [
+            {
+              "$ref": "#/definitions/AttachPointType"
+            }
+          ]
+        }
+      }
+    },
+    "AttachPointRepresentation": {
+      "type": "string",
+      "enum": [
+        "Standard",
+        "Ghost",
+        "Ghost2"
+      ]
+    },
+    "AttachPointType": {
+      "description": "The type of the point \"Origin\" - the origin of a product, matches to \"Child\" \"Child\" - a (virtual) child can be placed, matches to \"Origin\" \"Left\" - L-R neighborship, matches to \"Right\" \"Right\" - L-R neighborship, matches to \"Left\" \"Top\" - vertical neighborship, matches to \"Bottom\" \"Bottom\" - vertical neighborship, matches to \"Top\" \"Front\" - front/back neighborship, matches to \"Back\" \"Back\" - front/back neighborship, machtes to \"Front\" \"Alignment\" - auxiliary point to support alignments \"Maximum\" - marks the maximum of the bbox \"Minimum\" - marks the minimum of the bbox",
+      "type": "string",
+      "enum": [
+        "Origin",
+        "Child",
+        "Left",
+        "Right",
+        "Top",
+        "Bottom",
+        "Front",
+        "Back",
+        "Alignment",
+        "Maximum",
+        "Minimum"
+      ]
+    },
+    "Camera": {
+      "description": "A simple camera definition. Up vector is per default in positive y direction. FOV / Dollying depends on viewer.",
+      "type": "object",
+      "required": [
+        "lookAt",
+        "lookFrom"
+      ],
+      "properties": {
+        "lookAt": {
+          "description": "The position of the target point, a.k.a. look-at point.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Vector3"
+            }
+          ]
+        },
+        "lookFrom": {
+          "description": "The position of the camera, a.k.a. eye point.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Vector3"
+            }
+          ]
+        }
+      }
+    },
+    "CatalogEntry": {
+      "type": "object",
+      "required": [
+        "articleId",
+        "entries",
+        "entryId",
+        "entryText",
+        "entryType"
+      ],
+      "properties": {
+        "articleId": {
+          "description": "For type Article, the native id of the article to be created.",
+          "type": "string"
+        },
+        "entries": {
+          "description": "For type Folder, the contained entries: folders and/or articles",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CatalogEntry"
+          }
+        },
+        "entryId": {
+          "description": "Id of the entry. Needed if catalog processing is done server side.",
+          "type": "string"
+        },
+        "entryText": {
+          "description": "Localized entry text. Key is ISO 639-1 language code.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "entryType": {
+          "$ref": "#/definitions/CatalogEntryType"
+        }
+      }
+    },
+    "CatalogEntryType": {
+      "type": "string",
+      "enum": [
+        "Folder",
+        "Article"
+      ]
+    },
+    "Commercial": {
+      "type": "object",
+      "required": [
+        "id",
+        "properties"
+      ],
+      "properties": {
+        "article": {
+          "description": "The (basic) article code.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "id": {
+          "description": "The instance id of the product in the configurator/basket.",
+          "type": "string"
+        },
+        "longText": {
+          "description": "Long, localized article text. Key is ISO 639-1 language code.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "masterId": {
+          "description": "The instance id of an associated master product, e.g. a set.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "nativeId": {
+          "description": "The native id.\n\nIn case of IDM, this is <series/>|<product/>.\n\nIn case of XcalibuR, this is <model_source_id/>@@<product_source_id/>",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "priceUnit": {
+          "description": "The price unit, for all prices of this article. Possible values: \"EUR_Ct\" - Euro Cent \"USD_Ct\" - USD Cent \"CHF_Rp\" - CHF Rappen",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "properties": {
+          "description": "The properties of the article.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Property"
+          }
+        },
+        "purchasePrice": {
+          "description": "The article's purchase price, according to the price unit.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "salesPrice": {
+          "description": "The article's sales price, according to the price unit.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "shortText": {
+          "description": "Short (one-line), localized article text.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "variant": {
+          "description": "Additional article code that describes the specific variant.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "variantText": {
+          "description": "Long, localized article text that describes the variant. Used as an addition to the long text, not as replacement. Key is ISO 639-1 language code.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "Component": {
+      "description": "A 3D component that is used to model products. A product corresponds to a tree of Objects. Inside the tree, transforms are always inherited from parent to child and concatenated. Material Categories are inherited from parent to child, as long as the child does not have one.\n\nIGXC Compatibility: Points and Categories are moved to the Product. Evaluator and Evaluator Parameters have been removed.",
+      "type": "object",
+      "required": [
+        "path"
+      ],
+      "properties": {
+        "deformation": {
+          "description": "The optional attribute defines a deformation value in the range of 0 to 1, to be applied to the geometry. 0 means no deformation, 1 means full deformation. This setting has a higher priority, compared with the Deformation specified as Geometry Parameter in ig.Geometry.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "geometry": {
+          "description": "The optional attribute specifies a fully scoped geometry.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "geometryParameters": {
+          "description": "The optional attribute specifies additional parameters to be applied to the geometry.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "interactor": {
+          "description": "Optional attribute that assigns an interactor script to the object. Fully scoped name of an interactor class. The class must be provided by the scripts in the scene.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "interactorParameters": {
+          "description": "Optional attribute that provides further parameters for the created interactor.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "layer": {
+          "description": "The optional attribute defines a layer tag for this object.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mapping": {
+          "description": "The optional attribute sets a mapping to be applied to the non-object bound UV set - typically, the UV set used for the material.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/GeometryMapping"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "materialCategory": {
+          "description": "The optional attribute sets a material category for the object and all children (recursively) that do not set one themselves.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "options": {
+          "description": "The optional attribute defines property ids that are linked to this object (and it's children). This information may be used for context- sensitive configuration.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "path": {
+          "description": "The Path describes the tree structure. The root path \".\" is mandatory. First-level children may be \"o1\", \"o2\", \"e1\", and so on. Again, \"o1.o1\" is a child of \"o1\". And so on. The sequence of objects must be compatible to the corresponding tree defined by Path of these objects. So any parent must occur in the array before it's children, and so on.",
+          "type": "string"
+        },
+        "selectable": {
+          "description": "The attribute controls if the object is selectable or--if not--what should happen then. Allowed values are: \"Self\", \"Parent\" (default) and \"None\" (see above for description).\n\ndefault value = \"Parent\"",
+          "default": null,
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ComponentSelectable"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tags": {
+          "description": "One or more symbolic id to identify a component at run-time. Unlike Path, a Tag is more robust and not biunique. Version: OC 1.1",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "transform": {
+          "description": "The optional attribute specifies an offset to the parent. The parent's transform will always be concatenated with the child's one. The transform of root objects (Path: \".\") will be ignored if existing!",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Transform"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "visible": {
+          "description": "The attribute controls the visibility of the object. If it is invisible, all children are invisible too (recursively). If the attribute is unspecified in a JSON file, it is considered to be true!\n\ndefault value = true",
+          "default": true,
+          "type": "boolean"
+        }
+      }
+    },
+    "ComponentSelectable": {
+      "type": "string",
+      "enum": [
+        "Self",
+        "Parent",
+        "None"
+      ]
+    },
+    "Geometry": {
+      "description": "An abstract representation of a 3D Geometry.",
+      "type": "object",
+      "properties": {
+        "cns": {
+          "description": "Optional representation in the CADENAS format.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Geometry"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ig": {
+          "description": "Optional representation in the ig format.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Geometry"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "GeometryMapping": {
+      "description": "A Transformation of the UV Set of a Geometry Ordering S///T///R///V This order minimizes shearing and improves the posibility to fix tiling.\n\nCombination with a MaterialMapping looks like this: GS///GT///GR///MR///MS///MT///V\n\nGS .. Matrix of GeometryMapping.Scale/// GT .. Matrix of GeometryMapping.Translation/// GR .. Matrix of GeometryMapping.Rotation\n\nMR .. Matrix of TextureMapping.Rotation MS .. Matrix of TextureMapping.Scale/// MT .. Matrix of TextureMapping.Translation///\n\nV .. (UV)-Vector to be transformed\n\nRotation is clockwise in degrees",
+      "type": "object",
+      "required": [
+        "rotation",
+        "translationS",
+        "translationT"
+      ],
+      "properties": {
+        "rotation": {
+          "type": "number",
+          "format": "double"
+        },
+        "scaleS": {
+          "description": "default value = 1",
+          "default": 1.0,
+          "type": "number",
+          "format": "double"
+        },
+        "scaleT": {
+          "description": "default value = 1",
+          "default": 1.0,
+          "type": "number",
+          "format": "double"
+        },
+        "translationS": {
+          "type": "number",
+          "format": "double"
+        },
+        "translationT": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "ImageFormat": {
+      "type": "string",
+      "enum": [
+        "PNG",
+        "JPEG",
+        "SVG"
+      ]
+    },
+    "MasterData": {
+      "description": "Basic master data, used OC master-data scenarios.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "description": "Informal description. UTF-8. 100 chars max.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "native_id": {
+          "description": "The instance id of an associated master product, e.g. a set.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "product_id": {
+          "description": "The commercial product Id. ASCII. 45 chars max.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Material": {
+      "description": "An abstract representation of a Material.",
+      "type": "object",
+      "properties": {
+        "ig": {
+          "description": "Optional representation in the 'ig' format.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Material"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "Preview": {
+      "description": "Product preview image, preferably a perspective image with 1k size.",
+      "type": "object",
+      "required": [
+        "image",
+        "imageFormat"
+      ],
+      "properties": {
+        "image": {
+          "description": "The manadatory image reference.",
+          "type": "string"
+        },
+        "imageFormat": {
+          "description": "The mandatory format of the image.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ImageFormat"
+            }
+          ]
+        }
+      }
+    },
+    "Product": {
+      "description": "An initial or incremental product representation.",
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "categories": {
+          "description": "Product categories for the client-side implementation of planning behavior. If Categories is not null, it entirely replaces the existing categories.\n\nIGXC Compatibility: In IGXC, categories were considered from the structure's root entry. Now they can be updated, even if the structure does not change.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "commercial": {
+          "description": "Commercial data related to this product",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Commercial"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "kind": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ProductKind"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "masterData": {
+          "description": "Master data related to this product Version: OC 1.3",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/MasterData"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "materialCategories": {
+          "description": "The mandatory attribute maps material categories to materials. Both, material categories and materials should be compatible with a three-level technical namespace. Implicit material categories consist of prefix '@' and a material, and should be included too, even if this is kind of redundant.\n\nIGXC Compatibility: In IGXC this attribute was named Categories.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "points": {
+          "description": "Attachment points for the client-side creation of neighbor and parent-child relationships. If Points is not null, it entirely replaces the existing points.\n\nIGXC Compatibility: In IGXC, points were considered from the structure's root entry. Now they can be updated, even if the structure does not change.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/AttachPoint"
+          }
+        },
+        "preview": {
+          "description": "An optional product preview image. Version: OC 1.2",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Preview"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "state": {
+          "description": "Optional state information for a product. Even if the state object exists, not all attributes may be set. The state information always entirely updates an existing state information.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ProductState"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "status": {
+          "description": "Contains product related status information.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Status"
+            }
+          ]
+        },
+        "structure": {
+          "description": "The tree structure that describes the product in 3D. If the structure is not null, it entirely replaces the existing structure.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/Component"
+          }
+        },
+        "topView": {
+          "description": "An optional product representation from top-view perspective. Version: OC 1.2",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TopView"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "transform": {
+          "description": "Optional world transform of the product representation. If the transform is not null, it entirely replaces the existing transform.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Transform"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "ProductKind": {
+      "type": "string",
+      "enum": [
+        "Product",
+        "Set",
+        "Placeholder"
+      ]
+    },
+    "ProductState": {
+      "description": "State information of a product.\n\nIGXC Compatibility: The PBR hash has been removed for now.",
+      "type": "object",
+      "properties": {
+        "comId": {
+          "description": "Optional commercial instance id. Will be sent from client to server (and retour) to identify the object in the configurator/basket.\n\nNote. comId should match to Commercial.Id if Commercial exists.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "geometricHash": {
+          "description": "The geometric hash may be created from a configurator service. It will be sent to the client, which may return it during upcoming update requests. The service may then detect a non-geometric update of the product representation and send a corresponding update.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gfxId": {
+          "description": "Optional graphical instance it. Will typically be sent from client (where this id is created and managed) to the server and returned from it, for clear assignment of product representation.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "visualHash": {
+          "description": "The visual hash may be created from a configurator service. It will be sent to the client, which may return it during upcoming update requests. The service may then detect a non-visual update of the product representation and send a corresponding update.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Property": {
+      "type": "object",
+      "required": [
+        "position",
+        "propertyId",
+        "propertyText"
+      ],
+      "properties": {
+        "position": {
+          "description": "The position of the property in the product's property editor.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "propertyId": {
+          "description": "The unique id of the property.",
+          "type": "string"
+        },
+        "propertyText": {
+          "description": "Localized property text. Key is ISO 639-1 language code.",
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "valueId": {
+          "description": "The optional id of the property's current value.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "valueText": {
+          "description": "The localized text of the value. Needed if valueId cannot be resolved in Values.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "values": {
+          "description": "The values of the property.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/Value"
+          }
+        }
+      }
+    },
+    "Quaternion": {
+      "description": "Description of a three-dimensional rotation. All attributes are mandatory.",
+      "type": "object",
+      "required": [
+        "w",
+        "x",
+        "y",
+        "z"
+      ],
+      "properties": {
+        "w": {
+          "type": "number",
+          "format": "double"
+        },
+        "x": {
+          "type": "number",
+          "format": "double"
+        },
+        "y": {
+          "type": "number",
+          "format": "double"
+        },
+        "z": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "Representation": {
+      "type": "string",
+      "enum": [
+        "Standard",
+        "CAD_BIM",
+        "Photo"
+      ]
+    },
+    "Script": {
+      "description": "Information of a client-side JavaScript script (ECMA 5.1). All attributes, except Path, are mandatory.",
+      "type": "object",
+      "required": [
+        "mode",
+        "name",
+        "runTime",
+        "version"
+      ],
+      "properties": {
+        "mode": {
+          "description": "The mode of the script.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ScriptMode"
+            }
+          ]
+        },
+        "name": {
+          "description": "The name of the script, should correspond to it's scope, two or three levels.",
+          "type": "string"
+        },
+        "path": {
+          "description": "Optional path to the JavaScript file, fallback: Name + \".js\"",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "runTime": {
+          "description": "The operation mode. For client-side scripts it must be true.",
+          "type": "boolean"
+        },
+        "version": {
+          "description": "The version of the script: <Major/>.<Minor/>.<Build/>.<Release/>\n\n<Major/> starts at 1 and will be incremented on major changes.\n\n<Minor/> starts at 0 and will be incremented on minor changes.\n\n<Build/> starts at 0 and will be incremented on small changes.\n\n<Release/> starts at 1 for non-final release and 100 for final ones.\n\nRelease numbers bigger than 100 mark bug fixes/patches.",
+          "type": "string"
+        }
+      }
+    },
+    "ScriptMode": {
+      "type": "string",
+      "enum": [
+        "Interactor"
+      ]
+    },
+    "Status": {
+      "description": "Should be handled as additional information for e.g. debugging. Contains information if an object is valid. If not, a status code and maybe an additional message inform about what is wrong.",
+      "type": "object",
+      "required": [
+        "code"
+      ],
+      "properties": {
+        "code": {
+          "description": "Describes status in short. Default is 200, no errors detected.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/StatusCode"
+            }
+          ]
+        },
+        "message": {
+          "description": "Optional message string contains additional information to better understand the status code.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "StatusCode": {
+      "description": "Defines status codes on product and scene level. 200 is default. All other codes than 200 are errors. Codes <= 1000 are reserved except the predefined ones. Codes > 1000 are user defined error codes.",
+      "type": "integer",
+      "enum": [
+        200,
+        400,
+        404,
+        409,
+        500,
+        503
+      ]
+    },
+    "TopView": {
+      "description": "Top-view representation of a Product. Implemented by an image that is put into a rectangular region. The origin of the region is aligned with the origin of the Product but may be moved by an offset.",
+      "type": "object",
+      "required": [
+        "depth",
+        "image",
+        "imageFormat",
+        "width"
+      ],
+      "properties": {
+        "depth": {
+          "description": "Depth, in m, of the rectangular region.",
+          "type": "number",
+          "format": "double"
+        },
+        "image": {
+          "description": "The manadatory image reference.",
+          "type": "string"
+        },
+        "imageFormat": {
+          "description": "The mandatory format of the image.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ImageFormat"
+            }
+          ]
+        },
+        "width": {
+          "description": "Width, in m, of the rectangular region.",
+          "type": "number",
+          "format": "double"
+        },
+        "x": {
+          "description": "Optional X offset, in m, of the rectangular region.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "z": {
+          "description": "Optional Z offset, in m, of the rectangular region.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        }
+      }
+    },
+    "Transform": {
+      "description": "Spatial transformation of an object, relative to it's parent object. All attributes are optional. But, if an attribute exists, all it's attributes must exist, too. The application ordering follows industry standard (X3D, ThreeJS) so first scales then rotates and then positions. This basically allows to scale and rotate an object undisturbed and then move it to its position. Think of a cube. Ordering as Matrices is therefore T///R///S///V",
+      "type": "object",
+      "properties": {
+        "position": {
+          "description": "The position of the object, relative to it's parent.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Vector3"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rotation": {
+          "description": "The rotation of the object, relative to it's parent.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Quaternion"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "scale": {
+          "description": "The scaling of the object's geometries.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Vector3"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "Value": {
+      "description": "Value of properties",
+      "type": "object",
+      "required": [
+        "position",
+        "valueId",
+        "valueText",
+        "values"
+      ],
+      "properties": {
+        "position": {
+          "description": "The position of the value in the property's selection list.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "valueId": {
+          "description": "The unique id of the property value.",
+          "type": "string"
+        },
+        "valueText": {
+          "description": "Localized value text. Key is ISO 639-1 language code.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "values": {
+          "description": "The sub values of the value.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Value"
+          }
+        }
+      }
+    },
+    "Vector3": {
+      "description": "Description of either Positions or Scalings. All attributes are mandatory. For positions, 1.0 means 1.0 m.",
+      "type": "object",
+      "required": [
+        "x",
+        "y",
+        "z"
+      ],
+      "properties": {
+        "x": {
+          "type": "number",
+          "format": "double"
+        },
+        "y": {
+          "type": "number",
+          "format": "double"
+        },
+        "z": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    }
+  }
+}
