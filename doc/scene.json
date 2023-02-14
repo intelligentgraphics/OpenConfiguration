@@ -1,5 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "$comment": "OpenConfiguration JSON Schema, Version 2023-02-14",
   "title": "Scene",
   "description": "The Scene is the central part of an OC data set. Each OC data set contains exactly one.\n\nA Scene may contain initial product representations and/or updates.\n\nA Scene may contain products that should be inserted instantly, as well as add-ons to be inserted later on and shown as placeholders before.",
   "type": "object",
@@ -75,6 +76,7 @@
     },
     "geometries": {
       "description": "The optional attribute provides an embedded geometry index.\n\nIGXC Compatibility: now it's embedded, self-contained geometries rather than just geometry names. Thus, separate assignments of geometry normal maps, deformations, etc. are removed. Also, the embedded geometry definition is optional. There can be external geometry definitions, too.",
+      "default": null,
       "type": [
         "object",
         "null"
@@ -85,6 +87,7 @@
     },
     "geometryIndexes": {
       "description": "The optional attribute provides links to external geometry indices. The key should be a two-level technical namespace to speedup the geometry lookup. The value must be an absolute or relative URI. The content of the value, must be de-serialized as GeometryIndex.\n\nIGXC Compatibility: In IGXC, this concept did not exist.",
+      "default": null,
       "type": [
         "object",
         "null"
@@ -97,14 +100,12 @@
       "description": "The mandatory attribute provides unique content hashes for assets that are directly referenced in the OC data set. The specific hash algorithm is unspecified. It may be an MD5 hash of the binary content for instance. But low-res assets may use the same hash as the originals, they are derived from. So, the only operation that is legal for hash, is to compare them with an optionally existing one.\n\nAll assets should have an entry here as downloaders may iterate through this record rather than exploring the other data entities.",
       "type": "object",
       "additionalProperties": {
-        "type": [
-          "string",
-          "null"
-        ]
+        "type": "string"
       }
     },
     "materialIndexes": {
       "description": "The optional attribute provides links to external geometry indices. The key should be a two-level technical namespace to speedup the geometry lookup. The value must be an absolute or relative URI. The content of the value, must be de-serialized as MaterialIndex.\n\nIGXC Compatibility: In IGXC, this concept did not exist.",
+      "default": null,
       "type": [
         "object",
         "null"
@@ -115,12 +116,20 @@
     },
     "materials": {
       "description": "The optional attribute provides an embedded geometry index.\n\nIGXC Compatibility: The embedded material definition is optional. There can be external material definitions, too.",
+      "default": null,
       "type": [
         "object",
         "null"
       ],
       "additionalProperties": {
         "$ref": "#/definitions/Material"
+      }
+    },
+    "packages": {
+      "description": "This optional attribute contains informal information about the projects used in this OC data set and its corresponding informal versions.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Package"
       }
     },
     "products": {
@@ -132,6 +141,7 @@
     },
     "redirections": {
       "description": "Redirections maybe needed to convert absolute asset urls into file names, especially when compiling a self-contained OC zip. The attribute is optional.\n\nVersion: OC 1.3",
+      "default": null,
       "type": [
         "object",
         "null"
@@ -171,7 +181,7 @@
   },
   "definitions": {
     "AttachPoint": {
-      "description": "An attachment point for planning support and placement of children. All attributes are mandatory.\n\nIGXC Compatibility: the Rotation is changed to Quaternion, in IGXC it was Euler-based.",
+      "description": "An attachment point for planning support and placement of children. All attributes are mandatory, except for Tags.\n\nTwo attachment points match: - if Key and Foreign match, if needed with wildcards in the Foreign key, - there's at least one matching Tag on both sides, in case at least one has tags, - the Types match to each other, such as L - R - both of them are enabled - the position offset in global space is less than 0.2 [m] - the rotation offset in global space is less than 45 deg\n\nIGXC Compatibility: the Rotation is changed to Quaternion, in IGXC it was Euler-based.",
       "type": "object",
       "required": [
         "enabled",
@@ -219,6 +229,16 @@
             }
           ]
         },
+        "tags": {
+          "description": "An optional list of ids or tags to be used for attach-point matching. If one point defines tags, the other point matches--if it already matches--and additionally provides at least one compatible tag. Two tags are compatible if there case-normalized versions are equal.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
         "type": {
           "description": "The type of the point",
           "allOf": [
@@ -238,7 +258,7 @@
       ]
     },
     "AttachPointType": {
-      "description": "The type of the point \"Origin\" - the origin of a product, matches to \"Child\" \"Child\" - a (virtual) child can be placed, matches to \"Origin\" \"Left\" - L-R neighborship, matches to \"Right\" \"Right\" - L-R neighborship, matches to \"Left\" \"Top\" - vertical neighborship, matches to \"Bottom\" \"Bottom\" - vertical neighborship, matches to \"Top\" \"Front\" - front/back neighborship, matches to \"Back\" \"Back\" - front/back neighborship, machtes to \"Front\" \"Alignment\" - auxiliary point to support alignments \"Maximum\" - marks the maximum of the bbox \"Minimum\" - marks the minimum of the bbox",
+      "description": "The type of the point \"Origin\" - the origin of a product, matches to \"Child\" \"Child\" - a (virtual) child can be placed, matches to \"Origin\" \"Left\" - L-R neighborship, matches to \"Right\" \"Right\" - L-R neighborship, matches to \"Left\" \"Top\" - vertical neighborship, matches to \"Bottom\" \"Bottom\" - vertical neighborship, matches to \"Top\" \"Front\" - front/back neighborship, matches to \"Back\" \"Back\" - front/back neighborship, matches to \"Front\" \"Alignment\" - auxiliary point to support alignments \"Maximum\" - marks the maximum of the bbox \"Minimum\" - marks the minimum of the bbox",
       "type": "string",
       "enum": [
         "Origin",
@@ -253,6 +273,21 @@
         "Maximum",
         "Minimum"
       ]
+    },
+    "BasicMap": {
+      "type": "object",
+      "properties": {
+        "map": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TextureMap"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
     },
     "Camera": {
       "description": "A simple camera definition. Up vector is per default in positive y direction. FOV / Dollying depends on viewer.",
@@ -327,6 +362,56 @@
         "Article"
       ]
     },
+    "Color": {
+      "description": "Basic color value. Linear RGB (Not sRGB). Values in the range 0.0 to 1.0",
+      "type": "object",
+      "required": [
+        "blue",
+        "green",
+        "red"
+      ],
+      "properties": {
+        "blue": {
+          "type": "number",
+          "format": "double"
+        },
+        "green": {
+          "type": "number",
+          "format": "double"
+        },
+        "red": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "ColorMap": {
+      "description": "Texture map with additional color value. The relationship between both will be defined in the application context.",
+      "type": "object",
+      "required": [
+        "color"
+      ],
+      "properties": {
+        "color": {
+          "description": "A color value.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Color"
+            }
+          ]
+        },
+        "map": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TextureMap"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
     "Commercial": {
       "type": "object",
       "required": [
@@ -347,6 +432,7 @@
         },
         "longText": {
           "description": "Long, localized article text. Key is ISO 639-1 language code.",
+          "default": null,
           "type": [
             "object",
             "null"
@@ -404,6 +490,7 @@
         },
         "shortText": {
           "description": "Short (one-line), localized article text.",
+          "default": null,
           "type": [
             "object",
             "null"
@@ -421,6 +508,7 @@
         },
         "variantText": {
           "description": "Long, localized article text that describes the variant. Used as an addition to the long text, not as replacement. Key is ISO 639-1 language code.",
+          "default": null,
           "type": [
             "object",
             "null"
@@ -458,6 +546,7 @@
         },
         "geometryParameters": {
           "description": "The optional attribute specifies additional parameters to be applied to the geometry.",
+          "default": null,
           "type": [
             "object",
             "null"
@@ -475,6 +564,7 @@
         },
         "interactorParameters": {
           "description": "Optional attribute that provides further parameters for the created interactor.",
+          "default": null,
           "type": [
             "object",
             "null"
@@ -524,7 +614,6 @@
         },
         "selectable": {
           "description": "The attribute controls if the object is selectable or--if not--what should happen then. Allowed values are: \"Self\", \"Parent\" (default) and \"None\" (see above for description).\n\ndefault value = \"Parent\"",
-          "default": null,
           "anyOf": [
             {
               "$ref": "#/definitions/ComponentSelectable"
@@ -578,7 +667,7 @@
           "description": "Optional representation in the CADENAS format.",
           "anyOf": [
             {
-              "$ref": "#/definitions/Geometry"
+              "$ref": "#/definitions/cadenasGeometry"
             },
             {
               "type": "null"
@@ -589,7 +678,7 @@
           "description": "Optional representation in the ig format.",
           "anyOf": [
             {
-              "$ref": "#/definitions/Geometry"
+              "$ref": "#/definitions/igGeometry"
             },
             {
               "type": "null"
@@ -597,6 +686,20 @@
           ]
         }
       }
+    },
+    "GeometryDeformationFormat": {
+      "type": "string",
+      "enum": [
+        "FFD",
+        "JSON"
+      ]
+    },
+    "GeometryDeformationXDataFormat": {
+      "type": "string",
+      "enum": [
+        "glTF",
+        "GLB"
+      ]
     },
     "GeometryMapping": {
       "description": "A Transformation of the UV Set of a Geometry Ordering S///T///R///V This order minimizes shearing and improves the posibility to fix tiling.\n\nCombination with a MaterialMapping looks like this: GS///GT///GR///MR///MS///MT///V\n\nGS .. Matrix of GeometryMapping.Scale/// GT .. Matrix of GeometryMapping.Translation/// GR .. Matrix of GeometryMapping.Rotation\n\nMR .. Matrix of TextureMapping.Rotation MS .. Matrix of TextureMapping.Scale/// MT .. Matrix of TextureMapping.Translation///\n\nV .. (UV)-Vector to be transformed\n\nRotation is clockwise in degrees",
@@ -633,6 +736,38 @@
         }
       }
     },
+    "GeometryMeshFormat": {
+      "type": "string",
+      "enum": [
+        "OpenCTM",
+        "OBJ",
+        "FBX",
+        "DWF"
+      ]
+    },
+    "GeometryNormalMapFormat": {
+      "type": "string",
+      "enum": [
+        "JPEG",
+        "PNG"
+      ]
+    },
+    "GeometryPreviewFormat": {
+      "type": "string",
+      "enum": [
+        "OpenCTM",
+        "OBJ",
+        "FBX"
+      ]
+    },
+    "GeomtryColliderFormat": {
+      "type": "string",
+      "enum": [
+        "OpenCTM",
+        "OBJ",
+        "FBX"
+      ]
+    },
     "ImageFormat": {
       "type": "string",
       "enum": [
@@ -644,6 +779,9 @@
     "MasterData": {
       "description": "Basic master data, used OC master-data scenarios.",
       "type": "object",
+      "required": [
+        "native_id"
+      ],
       "properties": {
         "description": {
           "description": "Informal description. UTF-8. 100 chars max.",
@@ -654,10 +792,7 @@
         },
         "native_id": {
           "description": "The instance id of an associated master product, e.g. a set.",
-          "type": [
-            "string",
-            "null"
-          ]
+          "type": "string"
         },
         "product_id": {
           "description": "The commercial product Id. ASCII. 45 chars max.",
@@ -676,7 +811,7 @@
           "description": "Optional representation in the 'ig' format.",
           "anyOf": [
             {
-              "$ref": "#/definitions/Material"
+              "$ref": "#/definitions/igMaterial"
             },
             {
               "type": "null"
@@ -684,6 +819,25 @@
           ]
         }
       }
+    },
+    "Package": {
+      "description": "Information about data packages used in this scene.",
+      "type": "object",
+      "properties": {
+        "scope": {
+          "description": "The scope of the package: top-level scope according to the ig.3D Domain Index and sub scope, concatenated by '.'",
+          "type": [
+            "string"
+          ]
+        },
+        "version": {
+          "description": "Informal version information.",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "additionalProperties": false
     },
     "Preview": {
       "description": "Product preview image, preferably a perspective image with 1k size.",
@@ -710,9 +864,6 @@
     "Product": {
       "description": "An initial or incremental product representation.",
       "type": "object",
-      "required": [
-        "status"
-      ],
       "properties": {
         "categories": {
           "description": "Product categories for the client-side implementation of planning behavior. If Categories is not null, it entirely replaces the existing categories.\n\nIGXC Compatibility: In IGXC, categories were considered from the structure's root entry. Now they can be updated, even if the structure does not change.",
@@ -758,6 +909,7 @@
         },
         "materialCategories": {
           "description": "The mandatory attribute maps material categories to materials. Both, material categories and materials should be compatible with a three-level technical namespace. Implicit material categories consist of prefix '@' and a material, and should be included too, even if this is kind of redundant.\n\nIGXC Compatibility: In IGXC this attribute was named Categories.",
+          "default": null,
           "type": [
             "object",
             "null"
@@ -800,9 +952,12 @@
         },
         "status": {
           "description": "Contains product related status information.",
-          "allOf": [
+          "anyOf": [
             {
               "$ref": "#/definitions/Status"
+            },
+            {
+              "type": "null"
             }
           ]
         },
@@ -886,8 +1041,7 @@
       "type": "object",
       "required": [
         "position",
-        "propertyId",
-        "propertyText"
+        "propertyId"
       ],
       "properties": {
         "position": {
@@ -901,12 +1055,12 @@
         },
         "propertyText": {
           "description": "Localized property text. Key is ISO 639-1 language code.",
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": "string"
           }
         },
         "valueId": {
@@ -918,15 +1072,13 @@
         },
         "valueText": {
           "description": "The localized text of the value. Needed if valueId cannot be resolved in Values.",
+          "default": null,
           "type": [
             "object",
             "null"
           ],
           "additionalProperties": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": "string"
           }
         },
         "values": {
@@ -1058,6 +1210,80 @@
         503
       ]
     },
+    "TextureMap": {
+      "type": "object",
+      "required": [
+        "map",
+        "mapFormat"
+      ],
+      "properties": {
+        "map": {
+          "description": "Absolute or relative path to the texture image.",
+          "type": "string"
+        },
+        "mapFormat": {
+          "description": "The mandatory format of the map.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/TextureMapFormat"
+            }
+          ]
+        },
+        "mapping": {
+          "description": "An optional UV mapping.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TextureMapping"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "TextureMapFormat": {
+      "type": "string",
+      "enum": [
+        "JPEG",
+        "PNG"
+      ]
+    },
+    "TextureMapping": {
+      "description": "A Transformation of the UV Set for a Material Ordering R///S///T///V Also see ThreeJS issue #15831\n\nThis order minimizes shearing and improves content creation.\n\nCombination with a GeometryMapping looks like this: GS///GT///GR///MR///MS///MT///V\n\nGR .. Matrix of GeometryMapping.Rotation GS .. Matrix of GeometryMapping.Scale/// GT .. Matrix of GeometryMapping.Translation///\n\nMR .. Matrix of TextureMapping.Rotation MS .. Matrix of TextureMapping.Scale/// MT .. Matrix of TextureMapping.Translation///\n\nV .. (UV)-Vector to be transformed\n\nRotation is clockwise in degrees",
+      "type": "object",
+      "required": [
+        "rotation",
+        "translationS",
+        "translationT"
+      ],
+      "properties": {
+        "rotation": {
+          "type": "number",
+          "format": "double"
+        },
+        "scaleS": {
+          "description": "default value = 1",
+          "default": 1.0,
+          "type": "number",
+          "format": "double"
+        },
+        "scaleT": {
+          "description": "default value = 1",
+          "default": 1.0,
+          "type": "number",
+          "format": "double"
+        },
+        "translationS": {
+          "type": "number",
+          "format": "double"
+        },
+        "translationT": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
     "TopView": {
       "description": "Top-view representation of a Product. Implemented by an image that is put into a rectangular region. The origin of the region is aligned with the origin of the Product but may be moved by an offset.",
       "type": "object",
@@ -1153,7 +1379,6 @@
       "required": [
         "position",
         "valueId",
-        "valueText",
         "values"
       ],
       "properties": {
@@ -1168,7 +1393,11 @@
         },
         "valueText": {
           "description": "Localized value text. Key is ISO 639-1 language code.",
-          "type": "object",
+          "default": null,
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": {
             "type": "string"
           }
@@ -1179,6 +1408,30 @@
           "items": {
             "$ref": "#/definitions/Value"
           }
+        }
+      }
+    },
+    "ValueMap": {
+      "description": "Texture map with additional scalar value. The relationship between both will be defined in the application context.",
+      "type": "object",
+      "properties": {
+        "map": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TextureMap"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "value": {
+          "description": "A scalar value. If the map is supported or not, and it's relation- ship to a map entry, is defined in the outer context.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
         }
       }
     },
@@ -1202,6 +1455,280 @@
         "z": {
           "type": "number",
           "format": "double"
+        }
+      }
+    },
+    "cadenasGeometry": {
+      "description": "CNS Geometry representation, neutral CAD representation.",
+      "type": "object",
+      "required": [
+        "part"
+      ],
+      "properties": {
+        "parameters": {
+          "default": null,
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "part": {
+          "type": "string"
+        }
+      }
+    },
+    "igGeometry": {
+      "description": "ig Geometry representation, mesh based.",
+      "type": "object",
+      "properties": {
+        "collider": {
+          "description": "An optional mesh to be used for collision detection.\n\nVersion: OC 1.1",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "colliderFormat": {
+          "description": "The mandatory format of the optional preview mesh. Version: OC 1.1",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/GeomtryColliderFormat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "deformation": {
+          "description": "Deformation description.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "deformationFormat": {
+          "description": "The mandatory format of the optional deformation. Allowed formats are \"FFD\" and \"JSON\".",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/GeometryDeformationFormat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "deformationXData": {
+          "description": "Shape-key file or other extra data, belonging to a deformation.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "deformationXDataFormat": {
+          "description": "The mandatory format of the optional shape-key file, or other extra deformation data.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/GeometryDeformationXDataFormat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mesh": {
+          "description": "An optional mesh to be displayed as main mesh. Note, in some case a geometry does not provide it, e.g. for super deformations.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "meshFormat": {
+          "description": "The mandatory format of the optional main mesh.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/GeometryMeshFormat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "normalMap": {
+          "description": "An optional normal map to be applied to the main mesh.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "normalMapFormat": {
+          "description": "The mandatory format of the optional normal map.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/GeometryNormalMapFormat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "parameters": {
+          "description": "Optional geometry-related parameters, to be resolved at client-side.\n\n\"SuperDeformation\": Marks the geometry as a super deformation. The assigned deformation will be applied to the local geometry (if any) as well as recursively to all child geometries. Target type: Boolean\n\n\"NormalMapTiling\": The Geometry Normal Map should be repeated instead of clamped outside 0..1 UV range Some 3D libraries call this \"wrapping mode\" if true set to \"repeat\", default is \"clamp\" Target type: Boolean Version: OC 1.1\n\n\"NormalMapStrength\": Changes the influence of the Geometry Normal Map in light calculation, default: 1, by multiplying the strength of the geometry normal map with this factor. Target type: number Version: OC 1.1\n\n\"RenderOrder\" FRender order for 3D libraries that render transparent objects in a separate, second pass, back to front. Negative values are rendered earlier in the process, positive values later, 0 is default and keeps library ordering. Raytracers and renderers with advanced transparency handling must ignore this! This is NOT intended for effects different from a natural/physical correct scene, i.e. it can not be used for artistic effects! Target type: number Version: OC 1.1",
+          "default": null,
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": true
+        },
+        "preview": {
+          "description": "An optional mesh to be displayed until the main mesh is loaded.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "previewFormat": {
+          "description": "The mandatory format of the optional preview mesh.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/GeometryPreviewFormat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "igMaterial": {
+      "type": "object",
+      "properties": {
+        "alpha": {
+          "description": "Alpha value or map. Value and map replace each other. Values in the range 0.0 to 1.0. 0.0 is transparent, 1.0 is opaque. Map is grayscale. Black is transparent, white is opaque.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ValueMap"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "diffuse": {
+          "description": "Diffuse property. Both color and map are supported. Color and map replace each other.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ColorMap"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "diffuseDelta": {
+          "description": "Diffuse delta map. The delta map modifies the diffuse color/map and typically has it's own mapping.\n\nFormat: 24 Bit (RGB)\n\nThe handling (for each channel/color) is: - linear mapping of [0, 255] to [0, 2] - multiplication with the diffuse/color value\n\n0 sets the original value to 0. 127/128 keeps the original value. 255 doubles the original value.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TextureMap"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "emission": {
+          "description": "Emission color. No map supported",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ColorMap"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mapping": {
+          "description": "Default mapping, may be overridden by specific texture maps.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TextureMapping"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "normal": {
+          "description": "Normal map.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/BasicMap"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "parameters": {
+          "description": "Optional geometry-related parameters, to be resolved at client-side. \"DoNotRescale\": Marks the material as not re-scaleable. Re-scaling can be applied for psychological reasons, for instance. Target type: Boolean\n\n\"Overlay\": For alpha-map materials, tells the renderer that the associated geometry should be an overlay to other geometries at the same location. Target type: Boolean\n\nIGXC Compatibility: Metamaterial parameters but without redundancy.",
+          "default": null,
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": true
+        },
+        "roughness": {
+          "description": "Roughness map.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/BasicMap"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "roughnessDelta": {
+          "description": "Roughness delta map. The delta map modifies the roughness value/map and typically has it's own mapping.\n\nFormat: 8 Bit (Grayscale)\n\nThe handling is: - linear mapping of [0, 255] to [0, 2] - multiplication with the roughness value\n\n0 sets the original value to 0. 127/128 keeps the original value. 255 doubles the original value.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TextureMap"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "shininess": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "specular": {
+          "description": "Specular map. Both color and map are supported. The color (white if undefined) will be used as a factor to the map, if any.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ColorMap"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "taxonomy": {
+          "description": "Taxonomy information according to docs/ig_Taxonomy",
+          "default": null,
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": true
         }
       }
     }
